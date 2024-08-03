@@ -17,21 +17,23 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+
+development:
+  <<: *default
+  database: bcb_carts_development
   username: postgres
   password: <%= ENV['BCB_CARTS_DATABASE_PASSWORD'] %>
   host: localhost
   port: 5432
 
-development:
-  <<: *default
-  database: bcb_carts_development
-
 test:
   <<: *default
   database: bcb_carts_test
+  username: postgres
+  password: <%= ENV['BCB_CARTS_DATABASE_PASSWORD'] %>
+  host: localhost
+  port: 5432
 
 production:
   <<: *default
-  database: bcb_carts_production
-  username: postgres
-  password: <%= ENV['BCB_CARTS_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
