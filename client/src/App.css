@@ -1,0 +1,16 @@
+.Navbar {
+  display: flex;
+  align-items: center;
+  background-color: #282c34;
+  padding: 10px;
+  color: white;
+}
+
+.Navbar-logo {
+  height: 40px; /* Adjust the height as needed */
+  margin-right: 10px;
+}
+
+.Navbar-title {
+  font-size: 1.5em;
+}
