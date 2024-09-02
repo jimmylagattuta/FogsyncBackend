@@ -1,16 +1,361 @@
-.Navbar {
+/* Base colors */
+:root {
+  --background-color: #e0f7fa;
+  --text-color: #002f6c;
+  --navbar-bg-color: #0288d1;
+  --navbar-link-hover-color: #039be5;
+  --white-color: #ffffff;
+}
+
+/* Overall background */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Navbar styles */
+.navbar {
   display: flex;
+  flex-direction: column;
+  background-color: var(--navbar-bg-color);
+  color: var(--white-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  overflow: hidden;
+  width: 100%;
+  justify-content: space-between !important;
+}
+
+.navbar-top {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-color: #282c34;
-  padding: 10px;
-  color: white;
+  padding: 15px 20px;
+  z-index: 1001; /* Ensure it stays above the navbar-links */
+  position: relative; /* Needed to properly apply z-index */
 }
 
-.Navbar-logo {
-  height: 40px; /* Adjust the height as needed */
-  margin-right: 10px;
+/* Title and logo container */
+.navbar-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
 }
 
-.Navbar-title {
+.navbar-title {
+  font-size: 1.2em;
+}
+
+.navbar-logo {
+  height: 35px;
+  margin: 0px 0 2px 0;
+}
+
+.navbar-subtitle {
+  font-size: 1.2em;
+}
+
+/* Hamburger menu styling */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 35px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 1002; /* Ensure the X icon stays on top */
+  position: relative; /* Needed to properly apply z-index */
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+.bar {
+  width: 100%;
+  height: 4px;
+  background-color: var(--white-color);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.bar.open:nth-child(1) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.bar.open:nth-child(2) {
+  opacity: 0;
+}
+
+.bar.open:nth-child(3) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Navbar links - hidden by default on small screens */
+.navbar-links {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end; /* Align items to the right */
+  background-color: var(--navbar-bg-color);
+  width: 100%;
+  z-index: 1000;
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: calc(100vh - 60px); /* Ensure it doesn't exceed the screen height */
+}
+
+
+.navbar-links.show {
+  display: flex;
+  padding: 10px 0;
+}
+
+.navbar-links a {
+  display: inline-block; /* Ensure the width of the link is only as wide as the text */
+  color: var(--white-color);
+  text-decoration: none;
+  padding: 15px 20px; /* Adjusted padding with extra padding on the left to align right */
   font-size: 1.5em;
+  text-align: right; /* Align text to the right */
+  transition: background-color 0.3s ease;
+  width: auto;
+}
+
+.navbar-links a:hover {
+  background-color: var(--navbar-link-hover-color);
+}
+
+.login-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* Ensure it sits above everything else */
+}
+
+.login-form-overlay form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Close button styling - match the hamburger menu */
+.close-login-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 35px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 1002; /* Ensure it stays on top */
+}
+
+.close-login-button:hover {
+  transform: scale(1.1);
+}
+
+.close-login-button .bar {
+  width: 100%;
+  height: 4px;
+  background-color: var(--white-color);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.close-login-button .bar:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.close-login-button .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.close-login-button .bar:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* Full-screen navbar styles for larger screens */
+@media (min-width: 861px) {
+  .navbar {
+    flex-direction: row;
+    align-items: center !important;
+  }
+
+  .navbar-title-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center !important;
+  }
+  .navbar-logo {
+    height: 65px;
+  }
+  .navbar-title {
+    font-size: 1.5em;
+  }
+  .navbar-subtitle {
+    font-size: 1.5em;
+  }
+  .navbar-links-wrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end !important;
+    align-items: center !important;
+  }
+
+  .navbar-links {
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    overflow: visible; /* Reset overflow for larger screens */
+    max-height: none; /* Reset max-height for larger screens */
+  }
+
+  .navbar-links a {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    text-align: left;
+  }
+
+  .hamburger {
+    display: none !important;
+  }
+}
+
+/* Adjustments for small screens up to 860px */
+@media (max-width: 860px) {
+  .navbar-title-container {
+    align-items: center;
+  }
+
+  .navbar-logo {
+    height: 35px;
+  }
+  .navbar-title {
+    font-size: 1.2em;
+  }
+  .navbar-subtitle {
+    font-size: 1.2em;
+  }
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-title {
+    flex-grow: 1;
+  }
+
+  .navbar-links {
+    display: none;
+    align-items: center;
+  }
+
+  .navbar-links.show {
+    display: flex;
+  }
+}
+
+/* Specific adjustments for screens around 853px */
+@media (min-width: 840px) and (max-width: 860px) {
+  .navbar .navbar-links.show {
+    padding: 20px 0 !important;
+  }
+
+  .navbar .navbar-links a {
+    font-size: 2em !important;
+    padding: 25px !important;
+    width: 100%; /* Adjust for larger text */
+  }
+
+  .navbar .navbar-logo {
+    height: 65px !important;
+  }
+
+  .navbar-title {
+    font-size: 1.5em;
+  }
+  .navbar-subtitle {
+    font-size: 1.5em;
+  }
+
+  .navbar .hamburger {
+    width: 50px !important;
+    height: 45px !important;
+  }
+
+  .navbar .bar {
+    height: 7px !important;
+  }
+}
+
+/* Adjustments for slightly larger mobile screens */
+@media (min-width: 321px) and (max-width: 460px) {
+  .navbar-links.show {
+    padding: 20px 0; /* Increase padding even more for larger mobile screens */
+  }
+
+  .navbar-links a {
+    font-size: 2em; /* Increase font size further for larger mobile screens */
+    padding: 25px; /* Increase padding for links */
+  }
+}
+
+/* Keep the smallest screen sizes unchanged */
+@media (max-width: 320px) {
+  .navbar-logo {
+    height: 30px;
+  }
+
+  .navbar-title {
+    font-size: 1.1em;
+  }
+
+  .hamburger {
+    width: 30px;
+    height: 25px;
+  }
+
+  .bar {
+    height: 3px;
+  }
+
+  .navbar-links.show {
+    padding: 0;
+  }
+
+  .navbar-links a {
+    font-size: 1.5em;
+    padding: 15px;
+  }
 }

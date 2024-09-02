@@ -1,0 +1,52 @@
+.signup-form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Ensure it sits above everything else */
+  }
+  
+  .signup-form-overlay form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+ 
+/* Close button styling - turns the button into a white X */
+.close-signup-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002; /* Ensure it stays on top */
+  }
+  
+  .close-signup-button .bar {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: var(--white-color);
+    transition: all 0.3s ease;
+  }
+  
+  .close-signup-button .bar:nth-child(1) {
+    transform: rotate(45deg);
+  }
+  
+  .close-signup-button .bar:nth-child(2) {
+    transform: rotate(-45deg);
+  }
+  
