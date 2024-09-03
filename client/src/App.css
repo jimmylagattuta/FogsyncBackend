@@ -634,6 +634,16 @@ body {
   .navbar {
     overflow: unset;
   }
+
+  .navbar-title {
+    font-size: 0.7em;
+  }
+
+  
+  .navbar-subtitle {
+    font-size: 0.7em;
+  }
+
   .navbar-links.show {
     padding: 20px 0; /* Increase padding even more for larger mobile screens */
   }
@@ -680,9 +690,16 @@ body {
     height: 30px;
   }
 
+
   .navbar-title {
-    font-size: 1.1em;
+    font-size: 0.5em;
   }
+
+  
+  .navbar-subtitle {
+    font-size: 0.5em;
+  }
+
 
   .hamburger {
     width: 30px;
