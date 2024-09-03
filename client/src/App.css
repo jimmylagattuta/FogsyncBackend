@@ -291,7 +291,6 @@ body {
   cursor: pointer;
   padding: 8px 15px;  /* Comfortable padding */
   margin-left: 10px;  /* Space from other elements */
-  text-transform: uppercase;
   display: flex;
   align-items: center;  /* Vertically centered */
   justify-content: center;  /* Horizontally centered */
