@@ -1,58 +1,64 @@
 import React, { useState } from "react";
-import SignupForm from "./SignupForm";
+import './SignupForm.css';
 
-const LoginForm = ({ toggleLoginForm }) => {
-  const [isSignup, setIsSignup] = useState(false);
-
-  const toggleForm = () => {
-    setIsSignup(!isSignup);
-  };
-
-  if (isSignup) {
-    return (
-      <div className="signup-form-wrapper">
-        <SignupForm toggleForm={toggleForm} />
-        <button onClick={toggleLoginForm}>Already have an account? Sign In</button>
-      </div>
-    );
-  }
-
+const LoginForm = ({ toggleSignupForm, setUser, toggleLoginForm }) => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
+
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setError(""); // Clear error when the user starts typing
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setLoading(true);
+
     fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then((user) => {
-          console.log('Logged in', user);
-        });
-      } else {
-        res.json().then((errors) => {
-          console.error(errors);
-        });
-      }
-    });
+    })
+      .then((res) => {
+        setLoading(false);
+        if (res.ok) {
+          res.json().then((user) => {
+            console.log('Logged in', user);
+            setUser(user);
+            toggleLoginForm();
+          });
+        } else {
+          res.json().then((data) => {
+            // Check if there's an error message from the server
+            if (data.error) {
+              setError(data.error);
+            } else {
+              setError("Login failed. Please check your credentials and try again.");
+            }
+          });
+        }
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.error('Network error:', err);
+        setError("Network error. Please try again.");
+      });
   };
 
+
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
+      <div className="form-group">
         <label htmlFor="username">Username:</label>
         <input
           id="username-input"
@@ -61,6 +67,8 @@ const LoginForm = ({ toggleLoginForm }) => {
           value={formData.username}
           onChange={handleChange}
         />
+      </div>
+      <div className="form-group">
         <label htmlFor="password">Password:</label>
         <input
           id="password-input"
@@ -69,10 +77,15 @@ const LoginForm = ({ toggleLoginForm }) => {
           value={formData.password}
           onChange={handleChange}
         />
-        <button type="submit">Submit</button>
-      </form>
-      <button onClick={toggleForm}>Don't have an account? Sign Up</button>
-    </div>
+      </div>
+      {error && <p className="error-message">{error}</p>} {/* Display error message */}
+      <button type="submit" className={`submit-btn ${loading ? 'loading' : ''}`}>
+        {loading ? <div className="spinner"></div> : 'Login'}
+      </button>
+      <button className="signin-btn" type="button" onClick={toggleSignupForm}>
+        Don't have an account? Sign Up
+      </button>
+    </form>
   );
 };
 
