@@ -19,7 +19,7 @@ function App() {
   const [loginFormVisible, setLoginFormVisible] = useState(false);
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [dropdownVisible, setDropdownVisible] = useState(false); // Add this line
+  const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -50,7 +50,6 @@ function App() {
       setSignupFormVisible(false);
     }
   };
-  
 
   useEffect(() => {
     const navbar = document.querySelector('.navbar');
@@ -68,12 +67,12 @@ function App() {
   }, []);
 
   const handleLogout = () => {
-    fetch('/logout', {method: "DELETE"})
-    .then(res => {
-          if (res.ok) {
-            setUser(null);
-          }
-    })
+    fetch('/logout', { method: "DELETE" })
+      .then(res => {
+        if (res.ok) {
+          setUser(null);
+        }
+      });
   };
 
   const toggleDropdown = () => {
@@ -85,6 +84,7 @@ function App() {
       setDropdownVisible(false);
     }
   };
+
   useEffect(() => {
     if (dropdownVisible) {
       document.addEventListener('mousedown', handleClickOutside);
@@ -105,7 +105,7 @@ function App() {
             <img src={`${process.env.PUBLIC_URL}/BCBLogo.jpg`} className="navbar-logo" alt="logo" />
             <span className="navbar-subtitle">Carts</span>
           </Link>
-                    {window.innerWidth <= 860 ? (
+          {window.innerWidth <= 860 ? (
             <>
               {user ? (
                 <div
@@ -127,9 +127,28 @@ function App() {
               )}
             </>
           ) : (
-            <span className="signup-button-large" onClick={toggleSignupForm}>
-              Sign Up
-            </span>
+            <>
+              {user ? (
+                <div
+                  className={`username-container ${dropdownVisible ? 'dropdown-open' : ''}`}
+                  ref={dropdownRef}
+                  onClick={toggleDropdown}
+                  style={{ display: 'flex', alignItems: 'center', marginLeft: '10px' }}  // Align container
+                >
+                  <span className="username-large">Hi {user.username}!</span>
+                  {dropdownVisible && (
+                    <div className="dropdown-content-large">
+                      <a href="#" onClick={handleLogout}>Logout</a>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <span className="signup-button-large" onClick={toggleSignupForm}>
+                  Sign Up
+                </span>
+              )}
+
+            </>
           )}
           <div className="hamburger" onClick={(e) => { e.preventDefault(); toggleMenu(); }}>
             <div className={`bar ${menuOpen ? 'open' : ''}`}></div>
