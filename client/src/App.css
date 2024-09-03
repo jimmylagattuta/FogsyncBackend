@@ -54,6 +54,11 @@ body {
 
 .navbar-title {
   font-size: 1.2em;
+  font-family: 'Cinzel', serif !important;
+
+  font-weight: 700; /* Make the font bold */
+  letter-spacing: 1px; /* Add some spacing between letters */
+  color: #ffffff; /* Set a fancy text color */
 }
 
 .navbar-logo {
@@ -64,6 +69,11 @@ body {
 
 .navbar-subtitle {
   font-size: 1.2em;
+  font-family: 'Cinzel', serif !important;
+
+  font-weight: 700; /* Make the font bold */
+  letter-spacing: 1px; /* Add some spacing between letters */
+  color: #ffffff; /* Set a fancy text color */
 }
 
 /* Hamburger menu styling */

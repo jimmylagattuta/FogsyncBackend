@@ -589,7 +589,7 @@ form button {
 
 .error-message {
   color: red;
-  font-size: 0.7em;
+  font-size: 1em;
   margin-top: -8px;
   margin-bottom: 8px;
   text-align: center;
