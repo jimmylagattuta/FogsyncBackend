@@ -422,7 +422,7 @@ form button {
       width: 95% !important;
       max-width: 450px !important; /* Increased max-width */
       padding: 40px !important; /* Increased padding */
-      height: auto !important;
+      height: 70% !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: center !important;
@@ -430,7 +430,7 @@ form button {
 
   .signup-form-overlay label,
   .login-form-overlay label {
-      font-size: 1.6em !important; /* Increased font size */
+      font-size: 1.2em !important; /* Increased font size */
       margin-bottom: 15px !important;
       width: 60% !important;
       text-align: left !important;
@@ -464,8 +464,8 @@ form button {
       position: absolute !important;
       top: 20px !important; /* Increased spacing */
       right: 20px !important;
-      width: 50px !important; /* Increased size */
-      height: 50px !important; /* Increased size */
+      width: 30px !important; /* Increased size */
+      height: 30px !important; /* Increased size */
       cursor: pointer !important;
       display: flex !important;
       align-items: center !important;
@@ -477,7 +477,7 @@ form button {
   .close-login-button .bar {
       position: absolute !important;
       width: 100% !important;
-      height: 4px !important; /* Increased thickness */
+      height: 2px !important; /* Increased thickness */
       background-color: var(--white-color) !important;
       transition: all 0.3s ease !important;
   }
