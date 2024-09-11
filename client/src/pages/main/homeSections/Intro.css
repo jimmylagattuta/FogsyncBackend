@@ -93,6 +93,15 @@
   }
 }
 
+@media (min-width: 1000px) {
+  .hero-text {
+    margin: 0px 0px 0px 40px;
+  }
+  .hero-overlay {
+    height: 81% !important;
+  }
+}
+
 @media (min-width: 1400px) {
   .hero-text {
     margin: 0px 0px 0px 40px;
@@ -101,6 +110,8 @@
     height: 85% !important;
   }
 }
+
+
 
 @media (max-width: 600px) {
   .hero-section {
