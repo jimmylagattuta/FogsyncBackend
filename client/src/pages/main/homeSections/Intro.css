@@ -165,11 +165,11 @@ body {
 @media (max-width: 430px) {
   .hero-section {
       flex-direction: column;
-      height: 100vh;
+      height: 70vh;
   }
 
   .hero-image-container {
-      height: 70%;
+      height: 100vh;
   }
 
   .hero-image {
@@ -179,7 +179,7 @@ body {
 
   .hero-overlay {
       width: 80%;
-      height: 70%;
+      height: 100%;
       clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
       background: rgba(38, 70, 83, 0.9);
   }

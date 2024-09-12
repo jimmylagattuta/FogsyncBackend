@@ -23,7 +23,7 @@ const Intro = () => {
     <div className="hero-section">
       <div className="hero-overlay">
         <div className="hero-text">
-          <h1>Your Slogan Goes Here</h1>
+          <h1>Slogan/Title Here</h1>
           <p>Here is a short description of whatever you want.</p>
           <button className="hero-button">Your Button</button>
         </div>
