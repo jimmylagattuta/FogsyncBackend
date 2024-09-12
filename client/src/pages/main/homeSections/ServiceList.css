@@ -1,0 +1,123 @@
+/* Base styles for small screens */
+.service-list-section {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .service-list-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .title-symbol {
+    margin-bottom: 20px;
+    margin: 0 auto;
+    font-size: 3em; /* Adjust size */
+    color: #1abc9c; /* Custom color */
+  }
+  
+  .service-list-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .service-item {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+
+    margin: 20px auto;
+  }
+  
+  .service-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .service-name {
+    font-size: 1.2em;
+    margin-top: 10px;
+    color: white;
+  }
+  
+  .service-name:hover {
+    color: var(--navbar-link-hover-color);
+  }
+
+    
+  /* Larger screens */
+  @media (min-width: 400px) {
+    .service-list-grid {
+      grid-template-columns: 1fr 1fr;
+      
+    }
+    .service-list-title {
+        font-size: 2em;
+      }
+
+      .title-symbol {
+        margin-bottom: 20px;
+        margin: 20px auto;
+        font-size: 3em; /* Adjust size */
+        color: #1abc9c; /* Custom color */
+      }
+      
+  }
+  
+
+  /* Larger screens */
+  @media (min-width: 768px) {
+    .service-list-grid {
+      grid-template-columns: 1fr 1fr;
+      
+    }
+    .service-list-title {
+        font-size: 3em;
+      }
+      .title-symbol {
+          margin: 20px auto;
+          margin-bottom: 40px;
+        font-size: 4em; /* Adjust size */
+        color: #1abc9c; /* Custom color */
+      }
+      .service-name {
+        font-size: 2em;
+        margin-top: 10px;
+        color: white;
+      }
+      
+  }
+  
+  @media (min-width: 1024px) {
+    .service-list-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    .service-list-title {
+      font-size: 4em;
+    }
+
+    .title-symbol {
+        margin: 20px auto;
+        margin-bottom: 60px;
+      font-size: 5em; /* Adjust size */
+      color: #1abc9c; /* Custom color */
+    }
+  
+    .service-name {
+      font-size: 3em;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .service-list-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      .service-name {
+        font-size: 2em;
+      }
+  }
+  
