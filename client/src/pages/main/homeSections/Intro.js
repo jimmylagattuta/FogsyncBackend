@@ -6,7 +6,7 @@ const images = [
   'https://i.imgur.com/fiqweb3.jpeg',
   'https://i.imgur.com/dRbhXia.jpeg',
   'https://i.imgur.com/7K3Uz6A.jpeg',
-  'https://i.imgur.com/azdpeAP.jpeg'
+  'https://i.imgur.com/bRqbId5.jpeg'
 ];
 
 const Intro = () => {
