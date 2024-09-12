@@ -169,7 +169,7 @@ body {
   }
 
   .hero-image-container {
-      height: 80%;
+      height: 70%;
   }
 
   .hero-image {
@@ -178,8 +178,8 @@ body {
   }
 
   .hero-overlay {
-      width: 90%;
-      height: 80%;
+      width: 80%;
+      height: 70%;
       clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
       background: rgba(38, 70, 83, 0.9);
   }
@@ -226,5 +226,36 @@ body {
   .hero-button {
       font-size: 0.8rem;
       padding: 8px 16px;
+  }
+}
+
+/* Media Queries for 932px width screens */
+@media (min-width: 930px) and (max-width: 934px) {
+  .hero-section {
+      height: 80vh; /* Adjusted from 100vh */
+      flex-direction: row; /* Ensuring it remains row-oriented */
+      align-items: center; /* Center align items for better visual appeal */
+  }
+
+  .hero-overlay {
+      width: 60%; /* Adjusting width for better overlay fit */
+      clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%); /* Slightly altering the clip path */
+  }
+
+  .hero-text {
+    padding: 66px;
+  }
+
+  .hero-text h1 {
+      font-size: 2.8em; /* Scaling up the heading a bit */
+  }
+
+  .hero-text p {
+      font-size: 1.6rem; /* Making paragraph text slightly larger */
+  }
+
+  .hero-button {
+      font-size: 1.8rem; /* Increase button font size */
+      padding: 10px 22px; /* More padding for better button size */
   }
 }

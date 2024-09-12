@@ -25,7 +25,7 @@ const Intro = () => {
         <div className="hero-text">
           <h1>Your Slogan Goes Here</h1>
           <p>Here is a short description of whatever you want.</p>
-          <button className="hero-button">Lorem Ipsum</button>
+          <button className="hero-button">Your Button</button>
         </div>
       </div>
       <div className="hero-image-container">
