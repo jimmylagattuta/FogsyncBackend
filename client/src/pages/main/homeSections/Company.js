@@ -29,7 +29,7 @@ function Company() {
         <hr className="custom-line" /> {/* Line added above */}
         <h2 className="company-title">Slogan/Title Here</h2>
         <p className="company-description">
-          About BCB Carts content here. Delivering excellence with a personalized touch. Our experts are here to meet your needs with precision and professionalism. Delivering excellence with a personalized touch. Our experts are here to meet your needs with precision and professionalism.
+          About BCB Carts content here. Delivering excellence etc with a personalized touch. Our experts etc are here to meet your needs with precision and professionalism etc. Delivering excellence etc with a personalized touch. Our experts etc are here to meet your needs with precision and professionalism etc.
         </p>
         <hr className="custom-line" /> {/* Line added below */}
       </div>
