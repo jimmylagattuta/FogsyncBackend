@@ -4,7 +4,7 @@ import './FAQ.css';
 function FAQ() {
   return (
     <div>
-      <h1>FAQ Page</h1>
+      <h1>Your content here for Frequently Asked Questions.</h1>
     </div>
   );
 }

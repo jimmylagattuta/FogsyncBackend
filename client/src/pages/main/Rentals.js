@@ -4,7 +4,7 @@ import './Rentals.css';
 function Rentals() {
   return (
     <div>
-      <h1>Rentals Page</h1>
+      <h1>Your content here for displaying all rentals available. This is basically a recycled Explore Our Services from the homepage specific to product rentals.</h1>
     </div>
   );
 }
