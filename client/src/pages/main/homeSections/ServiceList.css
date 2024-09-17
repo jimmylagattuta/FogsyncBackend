@@ -1,118 +1,130 @@
 .service-list-section {
-    padding: 20px;
-    text-align: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.service-list-title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #2c3e50; /* Darker color for better contrast */
+}
+
+.title-symbol {
+  margin-bottom: 20px;
+  font-size: 3em;
+  color: #1abc9c;
+}
+
+.service-list-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.service-item {
+  background-color: rgba(255, 255, 255, 0.1); /* Lighter background for a cleaner look */
+  padding: 15px;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.service-item.ease-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-item:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deepen shadow on hover */
+  transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.service-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease; /* Smooth image scaling */
+}
+
+.service-item:hover .service-image {
+  transform: scale(1.05); /* Zoom in on hover */
+}
+
+.service-name {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #1abc9c; /* Light color for contrast */
+  font-weight: 500;
+}
+
+.service-name:hover {
+  color: #1abc9c; /* Accent color on hover */
+  cursor: pointer;
+}
+
+/* Media Queries for larger screens */
+@media (min-width: 400px) {
+  .service-list-grid {
+    grid-template-columns: 1fr 1fr;
   }
-  
+
   .service-list-title {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: black;
+    font-size: 2em;
   }
-  
+
   .title-symbol {
     margin-bottom: 20px;
     font-size: 3em;
-    color: #1abc9c;
   }
-  
+}
+
+@media (min-width: 768px) {
   .service-list-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
   }
-  
-  .service-item {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    border-radius: 8px;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    margin: 20px auto;
+
+  .service-list-title {
+    font-size: 3em;
   }
-  
-  .service-item.ease-in {
-    opacity: 1;
-    transform: translateY(0);
+
+  .title-symbol {
+    margin-bottom: 40px;
+    font-size: 4em;
   }
-  
-  .service-image {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  
+
   .service-name {
-    font-size: 1.2em;
-    margin-top: 10px;
-    color: white;
+    font-size: 2em;
   }
-  
-  .service-name:hover {
-    color: var(--navbar-link-hover-color);
+}
+
+@media (min-width: 1024px) {
+  .service-list-grid {
+    grid-template-columns: 1fr 1fr;
   }
-  
-  /* Media Queries for larger screens */
-  @media (min-width: 400px) {
-    .service-list-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  
-    .service-list-title {
-      font-size: 2em;
-    }
-  
-    .title-symbol {
-      margin-bottom: 20px;
-      font-size: 3em;
-    }
+
+  .service-list-title {
+    font-size: 4em;
   }
-  
-  @media (min-width: 768px) {
-    .service-list-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  
-    .service-list-title {
-      font-size: 3em;
-    }
-  
-    .title-symbol {
-      margin-bottom: 40px;
-      font-size: 4em;
-    }
-  
-    .service-name {
-      font-size: 2em;
-    }
+
+  .title-symbol {
+    margin-bottom: 60px;
+    font-size: 5em;
   }
-  
-  @media (min-width: 1024px) {
-    .service-list-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  
-    .service-list-title {
-      font-size: 4em;
-    }
-  
-    .title-symbol {
-      margin-bottom: 60px;
-      font-size: 5em;
-    }
-  
-    .service-name {
-      font-size: 3em;
-    }
+
+  .service-name {
+    font-size: 3em;
   }
-  
-  @media (min-width: 1025px) {
-    .service-list-grid {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-  
-    .service-name {
-      font-size: 2em;
-    }
+}
+
+@media (min-width: 1025px) {
+  .service-list-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-  
+
+  .service-name {
+    font-size: 2em;
+  }
+}
