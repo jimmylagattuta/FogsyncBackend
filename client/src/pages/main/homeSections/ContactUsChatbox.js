@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import './Contact.css';
+import './ContactUsChatbox.css';
 
-function Contact() {
+const ContactUsChatbox = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
-    phone: '',  // Added phone number field
+    phone: '',  // Add phone number field
     message: '',
     agreement: false,
   });
@@ -125,7 +125,7 @@ function Contact() {
             {errors.email && <span className="error-message">{errors.email}</span>}
           </div>
           <div className="contact-form-group">
-            <label htmlFor="phone">Phone Number</label> {/* Added phone input */}
+            <label htmlFor="phone">Phone Number</label> {/* Add phone input */}
             <input
               type="tel"
               id="phone"
@@ -175,6 +175,6 @@ function Contact() {
       )}
     </div>
   );
-}
+};
 
-export default Contact;
+export default ContactUsChatbox;
