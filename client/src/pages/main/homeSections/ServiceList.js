@@ -8,8 +8,8 @@ const services = [
   { name: 'Lithium', image: 'https://i.imgur.com/3dPB1DX.webp', link: "/services" },
   { name: 'Parts', image: 'https://i.imgur.com/nEgLFmH.webp', link: "/parts" },
   { name: 'Pressure Wash', image: 'https://i.imgur.com/fwKirq6.webp', link: "/services" },
-  { name: 'Custom Weld', image: 'https://i.imgur.com/opzf9qa.webp', links: "/services" },
-  { name: 'Electronics', image: 'https://i.imgur.com/6ujl0oA.webp', links: "/services" }
+  { name: 'Custom Weld', image: 'https://i.imgur.com/opzf9qa.webp', link: "/services" },
+  { name: 'Electronics', image: 'https://i.imgur.com/6ujl0oA.webp', link: "/services" }
 ];
 
 function ServiceList() {
