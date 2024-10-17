@@ -10,6 +10,7 @@ import NavigationPage from './pages/main/Navigation';
 import Help from './pages/main/Help';
 import FAQ from './pages/main/FAQ';
 import Contact from './pages/main/Contact';
+import Services from './pages/main/Services';
 import AccountForms from './components/AccountForms';
 
 function App() {
@@ -161,9 +162,10 @@ function App() {
           <Link to="/sales" onClick={closeMenu}>Sales</Link>
           <Link to="/rentals" onClick={closeMenu}>Rentals</Link>
           <Link to="/parts" onClick={closeMenu}>Parts</Link>
-          <Link to="/navigation" onClick={closeMenu}>Navigation</Link>
+          <Link to="/services" onClick={closeMenu}>Services</Link>
+          {/* <Link to="/navigation" onClick={closeMenu}>Navigation</Link> */}
           <Link to="/help" onClick={closeMenu}>Help</Link>
-          <Link to="/faq" onClick={closeMenu}>FAQ</Link>
+          {/* <Link to="/faq" onClick={closeMenu}>FAQ</Link> */}
           <Link to="/contact" onClick={closeMenu}>Contact</Link>
         </div>
       </div>
@@ -173,6 +175,7 @@ function App() {
           <Route path="/sales" element={<Sales />} />
           <Route path="/rentals" element={<Rentals />} />
           <Route path="/parts" element={<Parts />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/navigation" element={<NavigationPage />} />
           <Route path="/help" element={<Help />} />
           <Route path="/faq" element={<FAQ />} />

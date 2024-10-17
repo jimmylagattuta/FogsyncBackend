@@ -2,14 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import './ServiceList.css';
 
 const services = [
-  { name: 'Service/Product', image: 'https://i.imgur.com/MF4hl3z.jpeg' },
-  { name: 'Service/Product', image: 'https://i.imgur.com/MF4hl3z.jpeg' },
-  { name: 'Service/Product', image: 'https://i.imgur.com/MF4hl3z.jpeg' },
-  { name: 'Service/Product', image: 'https://i.imgur.com/MF4hl3z.jpeg' },
-  { name: 'Service/Product', image: 'https://i.imgur.com/MF4hl3z.jpeg' },
-  { name: 'Service/Product', image: 'https://i.imgur.com/MF4hl3z.jpeg' },
-  { name: 'Service/Product', image: 'https://i.imgur.com/MF4hl3z.jpeg' },
-  { name: 'Service/Product', image: 'https://i.imgur.com/MF4hl3z.jpeg' }
+  { name: 'Cart Sales', image: 'https://i.imgur.com/ZifuC4m.webp', link: "/sales" },
+  { name: 'Cart Rentals', image: 'https://i.imgur.com/Nq4e2IE.webp', link: "/rentals" },
+  { name: 'Installs', image: 'https://i.imgur.com/E9JX8mU.webp', link: "/services" },
+  { name: 'Lithium', image: 'https://i.imgur.com/3dPB1DX.webp', link: "/services" },
+  { name: 'Parts', image: 'https://i.imgur.com/nEgLFmH.webp', link: "/parts" },
+  { name: 'Pressure Wash', image: 'https://i.imgur.com/fwKirq6.webp', link: "/services" },
+  { name: 'Custom Weld', image: 'https://i.imgur.com/opzf9qa.webp', links: "/services" },
+  { name: 'Electronics', image: 'https://i.imgur.com/6ujl0oA.webp', links: "/services" }
 ];
 
 function ServiceList() {
@@ -45,14 +45,16 @@ function ServiceList() {
 
       <div className="service-list-grid">
         {services.map((service, index) => (
-          <div
-            className="service-item"
-            key={index}
-            ref={(el) => (serviceRefs.current[index] = el)}
-          >
-            <img src={service.image} alt={service.name} className="service-image" />
-            <h3 className="service-name">{service.name}</h3>
-          </div>
+          <a href={service.link} className="service-item">
+            <div
+              
+              key={index}
+              ref={(el) => (serviceRefs.current[index] = el)}
+            >
+              <img src={service.image} alt={service.name} className="service-image" />
+              <h3 className="service-name">{service.name}</h3>
+            </div>
+          </a>
         ))}
       </div>
     </section>
