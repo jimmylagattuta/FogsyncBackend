@@ -5,35 +5,8 @@ import './Social.css';
 
 function Social() {
   const iconRefs = useRef([]);
-  const [isMobile, setIsMobile] = useState(false);
-  const [hoveredButton, setHoveredButton] = useState({
-    email: 'Email Us',
-    longBeach: 'Call Long Beach, CA',
-    griffin: 'Call Griffin, GA'
-  });
-
-  useEffect(() => {
-    // Check if the device is mobile
-    const checkIfMobile = () => {
-      if (window.innerWidth <= 768) {
-        setIsMobile(true);
-        setHoveredButton({
-          email: 'Contact via Email: mebcb@yahoo.com',
-          longBeach: 'Contact Long Beach, CA: +13233333471',
-          griffin: 'Contact Griffin, GA: +13233333471'
-        });
-      } else {
-        setIsMobile(false);
-      }
-    };
-
-    checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
-
-    return () => {
-      window.removeEventListener('resize', checkIfMobile);
-    };
-  }, []);
+  const [isFacebookClicked, setIsFacebookClicked] = useState(false); // Toggle between Facebook and extra icons
+  const facebookContainerRef = useRef(null); // Ref for Facebook icons container
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -58,50 +31,31 @@ function Social() {
     };
   }, []);
 
-  const handleHover = (index) => {
-    iconRefs.current.forEach((icon, idx) => {
-      if (icon) {
-        if (idx !== index) {
-          icon.classList.add('disable-shadow');
-        } else {
-          icon.classList.remove('disable-shadow');
-        }
+  // Handle clicking outside the Facebook icons
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        isFacebookClicked &&
+        facebookContainerRef.current &&
+        !facebookContainerRef.current.contains(event.target)
+      ) {
+        setIsFacebookClicked(false); // Reset to original Facebook icon
       }
-    });
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isFacebookClicked]);
+
+  const handleFacebookClick = () => {
+    setIsFacebookClicked(!isFacebookClicked); // Toggle between showing and hiding extra icons
   };
 
-  const handleMouseLeave = () => {
-    iconRefs.current.forEach((icon) => {
-      if (icon) {
-        icon.classList.remove('disable-shadow');
-      }
-    });
-  };
-
-  const handleButtonHover = (button) => {
-    if (!isMobile) {
-      setHoveredButton((prev) => ({
-        ...prev,
-        [button]: button === 'email'
-          ? 'Contact via Email: mebcb@yahoo.com'
-          : button === 'longBeach'
-          ? 'Contact Long Beach: +13233333471'
-          : 'Contact Griffin: +13233333471'
-      }));
-    }
-  };
-
-  const handleButtonLeave = (button) => {
-    if (!isMobile) {
-      setHoveredButton((prev) => ({
-        ...prev,
-        [button]: button === 'email'
-          ? 'Email Us'
-          : button === 'longBeach'
-          ? 'Call Long Beach, CA'
-          : 'Call Griffin, GA'
-      }));
-    }
+  const handleOtherIconHover = () => {
+    setIsFacebookClicked(false); // Reset Facebook icon when hovering over other icons
   };
 
   return (
@@ -109,26 +63,44 @@ function Social() {
       <hr className="underline" />
 
       <h2 className="social-media-title">Connect With Us</h2>
-      <div className="social-icons">
+      <div className="social-icons" ref={facebookContainerRef}>
+        {/* Main Facebook icon */}
         <a
-          href="https://facebook.com"
-          target="_blank"
-          rel="noopener noreferrer"
           className="social-icon facebook"
           ref={(el) => (iconRefs.current[0] = el)}
-          onMouseEnter={() => handleHover(0)}
-          onMouseLeave={handleMouseLeave}
+          onClick={handleFacebookClick} // Show/hide additional icons when clicked
         >
           <FontAwesomeIcon icon={faFacebook} />
         </a>
+
+        {/* Conditionally render the second and third icons based on click */}
+        {isFacebookClicked && (
+          <>
+            <a
+              href="https://www.facebook.com/BCBCarts/about"
+              className="social-icon facebook"
+              style={{ opacity: '1', fontSize: '1.5em', color: '#1877F2', alignSelf: 'center' }}
+            >
+              <FontAwesomeIcon icon={faFacebook} /> Long Beach, CA
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php/?id=61550530888896"
+              className="social-icon facebook"
+              style={{ opacity: '1', fontSize: '1.5em', color: '#1877F2', alignSelf: 'center' }}
+            >
+              <FontAwesomeIcon icon={faFacebook} /> Griffin, GA
+            </a>
+          </>
+        )}
+
+        {/* Other social icons */}
         <a
           href="https://snapchat.com"
           target="_blank"
           rel="noopener noreferrer"
           className="social-icon snapchat"
           ref={(el) => (iconRefs.current[1] = el)}
-          onMouseEnter={() => handleHover(1)}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={handleOtherIconHover} // Reset Facebook on hover
         >
           <FontAwesomeIcon icon={faSnapchat} />
         </a>
@@ -138,8 +110,7 @@ function Social() {
           rel="noopener noreferrer"
           className="social-icon tiktok"
           ref={(el) => (iconRefs.current[2] = el)}
-          onMouseEnter={() => handleHover(2)}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={handleOtherIconHover} // Reset Facebook on hover
         >
           <FontAwesomeIcon icon={faTiktok} />
         </a>
@@ -149,8 +120,7 @@ function Social() {
           rel="noopener noreferrer"
           className="social-icon instagram"
           ref={(el) => (iconRefs.current[3] = el)}
-          onMouseEnter={() => handleHover(3)}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={handleOtherIconHover} // Reset Facebook on hover
         >
           <FontAwesomeIcon icon={faInstagram} />
         </a>
@@ -160,8 +130,7 @@ function Social() {
           rel="noopener noreferrer"
           className="social-icon pinterest"
           ref={(el) => (iconRefs.current[4] = el)}
-          onMouseEnter={() => handleHover(4)}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={handleOtherIconHover} // Reset Facebook on hover
         >
           <FontAwesomeIcon icon={faPinterest} />
         </a>
@@ -171,8 +140,7 @@ function Social() {
           rel="noopener noreferrer"
           className="social-icon threads"
           ref={(el) => (iconRefs.current[5] = el)}
-          onMouseEnter={() => handleHover(5)}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={handleOtherIconHover} // Reset Facebook on hover
         >
           <FontAwesomeIcon icon={faThreads} />
         </a>
@@ -184,32 +152,26 @@ function Social() {
         <a
           href="mailto:mebcb@yahoo.com"
           className="contact-button email-button"
-          onMouseEnter={() => handleButtonHover('email')}
-          onMouseLeave={() => handleButtonLeave('email')}
         >
-          {hoveredButton.email}
+          Email Us
         </a>
         <a
           href="tel:+13233333471"
           className="contact-button phone-button"
-          onMouseEnter={() => handleButtonHover('longBeach')}
-          onMouseLeave={() => handleButtonLeave('longBeach')}
         >
-          {hoveredButton.longBeach}
+          Call Long Beach, CA
         </a>
         <a
           href="tel:+13233333471"
           className="contact-button phone-button"
-          onMouseEnter={() => handleButtonHover('griffin')}
-          onMouseLeave={() => handleButtonLeave('griffin')}
         >
-          {hoveredButton.griffin}
+          Call Griffin, GA
         </a>
       </div>
       
       <div className="footer-info">
         <p className="copyright">© 2024 BCB Carts</p>
-        <div className="divider"></div> {/* Divider between the two texts */}
+        <div className="divider"></div>
         <p className="powered-by">Powered by James Lagattuta</p>
       </div>
     </div>
