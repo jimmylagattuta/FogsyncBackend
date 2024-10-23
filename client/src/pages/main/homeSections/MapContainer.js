@@ -41,7 +41,8 @@ const MapContainer = () => {
     const [selectedOffice, setSelectedOffice] = useState(null);
     const [isZoomedIn, setIsZoomedIn] = useState(false);
 
-    const apiKey = process.env.REACT_APP_GOOGLE_MAPS_REACT_KEY;
+    // const apiKey = process.env.REACT_APP_GOOGLE_MAPS_REACT_KEY;
+    const apiKey = 'AIzaSyDhLa6C79MLDb-9auE-xsORAEf61lqemW0';
 
     const handleOfficeClick = (office) => {
         const screenWidth = window.innerWidth;
@@ -75,7 +76,7 @@ const MapContainer = () => {
         } else if (screenWidth >= 768) {
             setZoomLevel(3.5); // Zoom level for 768px and above
             setCenter({ lat: 30.5, lng: -100 }); // Adjusted center for 768px and above
-        } else if (screenWidth >= 400) {
+        } else if (screenWidth >= 350) {
             setZoomLevel(3.5); // Zoom level for 400px and above
             setCenter({ lat: 30.5, lng: -100 }); // Adjusted center for 400px and above
         } else {
@@ -121,7 +122,7 @@ const MapContainer = () => {
             } else if (window.innerWidth >= 768) {
                 setZoomLevel(3.5);
                 setCenter({ lat: midLat, lng: midLng });
-            } else if (window.innerWidth >= 400) {
+            } else if (window.innerWidth >= 350) {
                 setZoomLevel(3.5);
                 setCenter({ lat: midLat, lng: midLng });
             } else {

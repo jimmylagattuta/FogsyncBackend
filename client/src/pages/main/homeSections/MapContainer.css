@@ -182,7 +182,7 @@
     }
 }
 
-@media (min-width: 400px) {
+@media (min-width: 350px) {
     /* Expand the height for larger screens */
     .map-container {
         height: 45vh; /* More map height for larger screens */
