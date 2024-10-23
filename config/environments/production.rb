@@ -1,63 +1,57 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
+  # Middleware to compress responses
   config.middleware.insert_before ActionDispatch::Static, Rack::Deflater
 
-  # Code is not reloaded between requests.
+  # Code is not reloaded between requests
   config.cache_classes = true
 
-  # Eager load code on boot. This eager loads most of Rails and
-  # your application in memory, allowing both threaded web servers
-  # and those relying on copy on write to perform better.
-  # Rake tasks automatically ignore this option for performance.
+  # Eager load code on boot
   config.eager_load = true
 
-  # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  # Full error reports are disabled and caching is turned on
+  config.consider_all_requests_local = false
+  config.serve_static_assets = true  # Serve static assets in production
 
-  # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
-  # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
-  # config.require_master_key = true
+  # Enable asset digest for cache busting
+  config.assets.digest = true
 
-  # Disable serving static files from the `/public` folder by default since
-  # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
+  # Enable action caching
+  config.action_controller.perform_caching = true
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.asset_host = "http://assets.example.com"
-
-  # Specifies the header that your server uses for sending files.
-  # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
-  # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
-
-  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  # Ensure SSL is used in production
   config.force_ssl = true
 
-  # Include generic and useful information about system operation, but avoid logging too much
-  # information to avoid inadvertent exposure of personally identifiable information (PII).
-  config.log_level = :info
+  # Caching with Redis for production, set Redis URL in environment variables
+  config.cache_store = :redis_cache_store, { url: ENV['REDIS_TLS_URL'], expires_in: 30.days }
 
-  # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  # Use Sidekiq for background jobs, configure Redis URL
+  config.active_job.queue_adapter = :sidekiq
+  Sidekiq.configure_server do |config|
+    config.redis = { url: ENV['REDIS_URL'] }
+  end
+  Sidekiq.configure_client do |config|
+    config.redis = { url: ENV['REDIS_URL'] }
+  end
 
-  # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  # Disable assets compilation in production (ensure assets are precompiled)
+  config.assets.compile = false
 
-  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation cannot be found).
-  config.i18n.fallbacks = true
+  # Cache static assets for up to 1 year
+  config.public_file_server.headers = {
+    'Cache-Control' => 'public, max-age=31536000'
+  }
 
-  # Don't log any deprecations.
-  config.active_support.report_deprecations = false
+  # Specify the asset host for serving images, stylesheets, and JavaScripts
+  config.asset_host = "http://bcbcarts.com"
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
+  # Set Active Storage service (local storage by default)
+  config.active_storage.service = :local
 
-  # Use a different logger for distributed setups.
-  # require "syslog/logger"
-  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
+  # Action Mailer settings
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.asset_host = "https://bcbcarts.com"
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
@@ -67,12 +61,32 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
+
+  # Prepend all log lines with the following tags
+  config.log_tags = [ :request_id ]
+
+  # Set the logging level to :info to avoid exposing sensitive information
+  config.log_level = :info
+
+  # Log formatting
+  config.log_formatter = ::Logger::Formatter.new
+
+  # Use STDOUT logging when specified by environment
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  # Do not dump schema after migrations.
+  # Enable locale fallbacks for I18n (fallback to default locale when translation missing)
+  config.i18n.fallbacks = true
+
+  # Disable ActiveSupport deprecation notices
+  config.active_support.report_deprecations = false
+
+  # Do not dump schema after migrations
   config.active_record.dump_schema_after_migration = false
+
+  # Ensure static files are served by Rails if RAILS_SERVE_STATIC_FILES is set
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 end
