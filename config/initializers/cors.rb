@@ -14,3 +14,10 @@
 #       methods: [:get, :post, :put, :patch, :delete, :options, :head]
 #   end
 # end
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins 'https://www.bcbcarts.com', 'https://bcbcarts.com', 'http://localhost:3001' # Add localhost:3001 to the allowed origins
+      resource '*', headers: :any, methods: [:get, :post, :patch, :put, :delete, :options, :head], credentials: true
+    end
+  end
+  
