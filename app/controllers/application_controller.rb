@@ -12,8 +12,8 @@ class ApplicationController < ActionController::API
 
     private
     def ensure_www_subdomain
-        if request.host == "laorthos.com"
-          redirect_to "#{request.protocol}www.laorthos.com#{request.fullpath}", status: :moved_permanently
+        if request.host == "bcbcarts.com"
+          redirect_to "#{request.protocol}www.bcbcarts.com#{request.fullpath}", status: :moved_permanently
         end
     end
     
