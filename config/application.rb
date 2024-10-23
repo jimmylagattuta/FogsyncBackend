@@ -9,10 +9,13 @@ Bundler.require(*Rails.groups)
 
 module BcbCarts
   class Application < Rails::Application
+    config.load_defaults 7.0
+
     config.middleware.use ForceWWW
 
-    config.load_defaults 6.1
+    
     config.api_only = true
+    config.middleware.use Rack::Deflater
 
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
