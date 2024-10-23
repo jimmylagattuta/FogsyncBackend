@@ -1,190 +1,145 @@
+/* Scoped to ServiceList component */
 .service-list-section {
-  padding: 10px 30px 30px 30px;
-  text-align: center;
+  --background-color: #f5f5f5;
+  --text-color: #ffffff; /* Change text color to white for contrast */
+  --navbar-bg-color: #2c3e50;
+  --navbar-link-hover-color: #1abc9c;
+  --white-color: #ffffff;
+  --blue-color: linear-gradient(135deg, #264653, #2a9d8f);
+  --blue-color-two: linear-gradient(135deg, #2a9d8f, #264653);
+  --blue-color-three: linear-gradient(45deg, #2a9d8f, #264653);
+  
+  background-color: var(--background-color);
   background-image: url('https://i.imgur.com/YA8w0SN.webp');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  padding: 40px 10px; /* Add padding to the left and right */
+  text-align: center;
 }
 
 .service-list-title {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  color: white; /* Darker color for better contrast */
+  color: var(--text-color);
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
 .title-symbol {
-  margin-bottom: 20px;
-  font-size: 3em;
-  color: #1abc9c;
+  color: var(--navbar-link-hover-color);
+  font-size: 2rem;
+  margin-bottom: 40px; /* Add space below the cart icon */
 }
 
 .service-list-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 15px;
+  padding: 0 10px; /* Prevents images from touching the screen edges */
 }
 
 .service-item {
-  margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
-  height: min-content;
-  justify-self: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
-  background-color: white; /* Very light blue background */
   text-decoration: none;
-}
-
-.service-item.ease-in {
-  opacity: 1;
-  transform: translateY(0);
+  background-color: var(--white-color);
+  border-radius: 0px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 180px; /* Ensure images stay smaller on smaller screens */
 }
 
 .service-item:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deepen shadow on hover */
-  transform: translateY(-5px); /* Slight lift on hover */
+  transform: scale(1.05);
 }
 
 .service-image {
-  min-height: 180px;
-  height: 180px;
   width: 100%;
-  max-width: 200px;
-  
-  min-width: 200px;
-  /* border-radius: 5px; */
-  transition: transform 0.3s ease; /* Smooth image scaling */
-}
-
-.service-item:hover .service-image {
-  transform: scale(1.05); /* Zoom in on hover */
+  height: auto;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
 }
 
 .service-name {
-  font-size: 1.2em;
-  margin: 10px;
-  color: #1abc9c; /* Light color for contrast */
-  font-weight: 500;
-  text-decoration: none;
+  color: var(--navbar-bg-color); /* Use the dark navy blue for text contrast */
+  font-size: 1rem;
+  margin-top: 10px;
+  text-align: center;
 }
 
-.service-name:hover {
-  color: #1abc9c; /* Accent color on hover */
-  cursor: pointer;
-}
-
-/* Media Queries for larger screens */
-@media (min-width: 400px) {
-  .service-list-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  .service-list-title {
-    font-size: 2em;
-  }
-  
-  .title-symbol {
-    margin-bottom: 20px;
-    font-size: 3em;
-  }
-
-  .service-image {
-    min-width: unset;
-  }
-
+@media (min-width: 320px) {
   .service-item {
-    width: 180px;
+    max-width: 200px;
+  }
+
+  .service-name {
+    font-size: 1.1rem;
   }
 }
 
 @media (min-width: 768px) {
-  .service-list-grid {
-    display: flex;
-    flex-wrap: wrap;
-    grid-template-columns: repeat(3, 1fr); /* 3-column grid for larger screens */
-    gap: 20px;
-    justify-items: center;
-    justify-content: center;
-  }
-
   .service-list-title {
-    font-size: 3em;
-  }
-
-  .title-symbol {
+    color: var(--text-color);
+    font-size: 3rem;
     margin-bottom: 40px;
-    font-size: 4em;
-  }
-
-  .service-name {
-    font-size: 1.5em;
-  }
-  .service-item {
-    width: 25vw;
-  }
-  .service-image {
-    height: 210px;
-    max-width: unset;
-  }
- 
-}
-
-@media (min-width: 1024px) {
-  .service-list-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .service-list-title {
-    font-size: 4em;
-  }
-
-  .title-symbol {
-    margin-bottom: 60px;
-    font-size: 5em;
-  }
-
-  .service-image {
-    height: 260px;
-    max-width: 319px;
-    min-width: 200px;
-  }
-
-  .service-name {
-    /* font-size: 3em; */
-  }
-
-  .service-item {
-    min-width: 25vw;
-  }
-}
-
-@media (min-width: 1300px) {
-  .service-list-grid {
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 60px 0 0;
-  }
-
-  .service-name {
-    font-size: 2em;
-  }
-
-  .service-item {
-    width: 19.6%;
-    min-width: unset;
-    height: 420px;
   }
   
-  .service-image {
-    min-height: 236px;
-    height: 362px;
-    width: 100%;
-    min-width: unset;
-    max-width: unset;
-
+  .title-symbol {
+    color: var(--navbar-link-hover-color);
+    font-size: 3rem;
+    margin-bottom: 60px; /* Add space below the cart icon */
   }
+  .service-list-grid {
+    justify-content: center;
+  }
+  
+  .service-item {
+    max-width: 220px;
+  }
+
+  .service-name {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1569px) {
+  .service-item {
+    max-width: 300px; /* Increase the max width for larger screens */
+  }
+
+  .service-name {
+    font-size: 1.5rem; /* Increase the font size for the service names */
+  }
+
+  .service-list-title {
+    font-size: 3.5rem; /* Increase the title size */
+  }
+
+  .title-symbol {
+    font-size: 3.5rem; /* Increase the size of the cart icon */
+  }
+
+  .service-list-grid {
+    gap: 10px; /* Increase the gap between items */
+  }
+}
+
+/* Add this at the bottom of your CSS file */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.8s ease-out forwards; /* Fading up animation */
+  opacity: 0; /* Make sure items are invisible initially */
+  transform: translateY(20px); /* Start slightly lower */
 }

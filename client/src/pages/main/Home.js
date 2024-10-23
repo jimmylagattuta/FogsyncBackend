@@ -4,7 +4,7 @@ import Intro from './homeSections/Intro';
 import Company from './homeSections/Company';
 import AboutSection from './homeSections/AboutSection';
 import ServiceList from './homeSections/ServiceList';
-import ContactUsChatbox from './homeSections/ContactUsChatbox';
+import MapContainer from './homeSections/MapContainer';  // Import MapContainer
 
 const Home = () => {
   console.log('Home');
@@ -14,7 +14,7 @@ const Home = () => {
       <Company />
       <AboutSection />
       <ServiceList />
-      <ContactUsChatbox />
+      <MapContainer />
     </div>
   );
 }

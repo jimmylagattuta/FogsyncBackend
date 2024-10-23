@@ -6,7 +6,7 @@ const services = [
   { name: 'Cart Rentals', image: 'https://i.imgur.com/Nq4e2IE.webp', link: "/rentals" },
   { name: 'Installs', image: 'https://i.imgur.com/E9JX8mU.webp', link: "/services" },
   { name: 'Lithium', image: 'https://i.imgur.com/3dPB1DX.webp', link: "/services" },
-  { name: 'Parts', image: 'https://i.imgur.com/nEgLFmH.webp', link: "/parts" },
+  { name: 'Parts', image: 'https://i.imgur.com/Bu0AY4h.webp', link: "/parts" },
   { name: 'Pressure Wash', image: 'https://i.imgur.com/fwKirq6.webp', link: "/services" },
   { name: 'Custom Weld', image: 'https://i.imgur.com/opzf9qa.webp', link: "/services" },
   { name: 'Electronics', image: 'https://i.imgur.com/6ujl0oA.webp', link: "/services" }
@@ -20,7 +20,7 @@ function ServiceList() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('ease-in');
+            entry.target.classList.add('fade-up'); // Add 'fade-up' class when item is in view
           }
         });
       },
@@ -45,12 +45,8 @@ function ServiceList() {
 
       <div className="service-list-grid">
         {services.map((service, index) => (
-          <a href={service.link} className="service-item">
-            <div
-              
-              key={index}
-              ref={(el) => (serviceRefs.current[index] = el)}
-            >
+          <a href={service.link} className="service-item" key={index}>
+            <div ref={(el) => (serviceRefs.current[index] = el)}>
               <img src={service.image} alt={service.name} className="service-image" />
               <h3 className="service-name">{service.name}</h3>
             </div>

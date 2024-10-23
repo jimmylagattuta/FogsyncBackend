@@ -11,7 +11,9 @@ import Help from './pages/main/Help';
 import FAQ from './pages/main/FAQ';
 import Contact from './pages/main/Contact';
 import Services from './pages/main/Services';
+import ContactUsChatbox from './pages/main/homeSections/ContactUsChatbox';
 import AccountForms from './components/AccountForms';
+import Social from './components/Social';
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -182,6 +184,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
+      <ContactUsChatbox />
       <AccountForms
         toggleLoginForm={toggleLoginForm}
         toggleSignupForm={toggleSignupForm}
@@ -190,6 +193,7 @@ function App() {
         user={user}
         setUser={setUser}
       />
+      <Social />
     </Router>
   );
 }

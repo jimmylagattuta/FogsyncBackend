@@ -1,0 +1,26 @@
+.map-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+    border: 2px solid var(--blue-light);
+    border-radius: 8px;
+  }
+  
+  .map-marker {
+    color: var(--blue);
+    font-size: 24px;
+  }
+  
+  .map-marker span {
+    background-color: var(--white);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  @media (max-width: 768px) {
+    .map-container {
+      height: 300px;
+    }
+  }
+  
