@@ -11,8 +11,7 @@ module BcbCarts
   class Application < Rails::Application
     config.load_defaults 7.0
 
-    config.middleware.insert_before 0, "ForceWWW"
-
+    config.middleware.use ForceWWW
 
     
     config.api_only = true
