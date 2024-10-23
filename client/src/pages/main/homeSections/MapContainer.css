@@ -185,7 +185,7 @@
 @media (min-width: 350px) {
     /* Expand the height for larger screens */
     .map-container {
-        height: 45vh; /* More map height for larger screens */
+        height: 60vh; /* More map height for larger screens */
     }
 
     .map-marker i {

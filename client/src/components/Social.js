@@ -14,23 +14,29 @@ function Social() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
           }
         });
       },
       { threshold: 0.1 }
     );
-
-    iconRefs.current.forEach((icon) => {
-      if (icon) observer.observe(icon);
-    });
-
+  
+    // Only observe icons if the Facebook section is not clicked
+    if (!isFacebookClicked) {
+      iconRefs.current.forEach((icon) => {
+        if (icon) observer.observe(icon);
+      });
+    }
+  
     return () => {
       iconRefs.current.forEach((icon) => {
         if (icon) observer.unobserve(icon);
       });
     };
-  }, []);
-
+  }, [isFacebookClicked]); // Re-run this effect when isFacebookClicked changes
+  
+  
   // Handle clicking outside the Facebook icons
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -51,11 +57,7 @@ function Social() {
   }, [isFacebookClicked]);
 
   const handleFacebookClick = () => {
-    setIsFacebookClicked(!isFacebookClicked); // Toggle between showing and hiding extra icons
-  };
-
-  const handleOtherIconHover = () => {
-    setIsFacebookClicked(false); // Reset Facebook icon when hovering over other icons
+      setIsFacebookClicked(prevState => !prevState); // Toggle between showing and hiding extra icons
   };
 
   return (
@@ -69,6 +71,7 @@ function Social() {
           className="social-icon facebook"
           ref={(el) => (iconRefs.current[0] = el)}
           onClick={handleFacebookClick} // Show/hide additional icons when clicked
+          key="facebook-main" // Add key here
         >
           <FontAwesomeIcon icon={faFacebook} />
         </a>
@@ -80,6 +83,7 @@ function Social() {
               href="https://www.facebook.com/BCBCarts/about"
               className="social-icon facebook"
               style={{ opacity: '1', fontSize: '1.5em', color: '#1877F2', alignSelf: 'center' }}
+              key="facebook-long-beach"
             >
               <FontAwesomeIcon icon={faFacebook} /> Long Beach, CA
             </a>
@@ -87,63 +91,68 @@ function Social() {
               href="https://www.facebook.com/profile.php/?id=61550530888896"
               className="social-icon facebook"
               style={{ opacity: '1', fontSize: '1.5em', color: '#1877F2', alignSelf: 'center' }}
+              key="facebook-griffin"
             >
               <FontAwesomeIcon icon={faFacebook} /> Griffin, GA
             </a>
           </>
         )}
 
-        {/* Other social icons */}
-        <a
-          href="https://snapchat.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="social-icon snapchat"
-          ref={(el) => (iconRefs.current[1] = el)}
-          onMouseEnter={handleOtherIconHover} // Reset Facebook on hover
-        >
-          <FontAwesomeIcon icon={faSnapchat} />
-        </a>
-        <a
-          href="https://tiktok.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="social-icon tiktok"
-          ref={(el) => (iconRefs.current[2] = el)}
-          onMouseEnter={handleOtherIconHover} // Reset Facebook on hover
-        >
-          <FontAwesomeIcon icon={faTiktok} />
-        </a>
-        <a
-          href="https://instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="social-icon instagram"
-          ref={(el) => (iconRefs.current[3] = el)}
-          onMouseEnter={handleOtherIconHover} // Reset Facebook on hover
-        >
-          <FontAwesomeIcon icon={faInstagram} />
-        </a>
-        <a
-          href="https://pinterest.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="social-icon pinterest"
-          ref={(el) => (iconRefs.current[4] = el)}
-          onMouseEnter={handleOtherIconHover} // Reset Facebook on hover
-        >
-          <FontAwesomeIcon icon={faPinterest} />
-        </a>
-        <a
-          href="https://threads.net"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="social-icon threads"
-          ref={(el) => (iconRefs.current[5] = el)}
-          onMouseEnter={handleOtherIconHover} // Reset Facebook on hover
-        >
-          <FontAwesomeIcon icon={faThreads} />
-        </a>
+        {/* Other social icons, shown only when Facebook is not clicked */}
+        {!isFacebookClicked && (
+          <>
+            <a
+              href="https://snapchat.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon snapchat"
+              ref={(el) => (iconRefs.current[1] = el)}
+              key="snapchat"
+            >
+              <FontAwesomeIcon icon={faSnapchat} />
+            </a>
+            <a
+              href="https://tiktok.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon tiktok"
+              ref={(el) => (iconRefs.current[2] = el)}
+              key="tiktok"
+            >
+              <FontAwesomeIcon icon={faTiktok} />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon instagram"
+              ref={(el) => (iconRefs.current[3] = el)}
+              key="instagram"
+            >
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
+            <a
+              href="https://pinterest.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon pinterest"
+              ref={(el) => (iconRefs.current[4] = el)}
+              key="pinterest"
+            >
+              <FontAwesomeIcon icon={faPinterest} />
+            </a>
+            <a
+              href="https://threads.net"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon threads"
+              ref={(el) => (iconRefs.current[5] = el)}
+              key="threads"
+            >
+              <FontAwesomeIcon icon={faThreads} />
+            </a>
+          </>
+        )}
       </div>
 
       <hr className="underline" />
