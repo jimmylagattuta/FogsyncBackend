@@ -233,14 +233,14 @@
 
    /* Adjust office box size for visibility */
     .office-box {
-        width: 120px;
-        height: 120px;
+        width: 80px;
+        height: 80px;
         font-size: 1.1em;
     }
 
     /* Increase font size inside office box */
     .office-box p {
-        font-size: 0.9em;
+        font-size: 0.7em;
         line-height: 1.2em; /* Adjust for readability */
     }
 
