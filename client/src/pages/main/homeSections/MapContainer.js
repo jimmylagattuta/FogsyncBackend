@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
 import './MapContainer.css'; // New CSS for MapContainer
 
-
 const offices = [
   {
     id: 1,
@@ -34,14 +33,18 @@ const Marker = ({ lat, lng, text }) => (
 );
 
 const MapContainer = () => {
-  const [centered, setCentered] = useState({ lat: 33.7866, lng: -118.1917 });
-  const [zoomLevel, setZoomLevel] = useState(10);
+  // Calculate the midpoint between Long Beach and Griffin
+  const midLat = (33.7866 + 33.2468) / 2;
+  const midLng = (-118.1917 + -84.2640) / 2;
+
+  const [centered, setCentered] = useState({ lat: midLat, lng: midLng });
+  const [zoomLevel, setZoomLevel] = useState(5); // Default zoom level 5
 
   const handleResize = () => {
     if (window.innerWidth <= 1160) {
       setZoomLevel(9); // Adjust zoom level for smaller screens
     } else {
-      setZoomLevel(10);
+      setZoomLevel(5); // Default zoom level
     }
   };
 
@@ -51,13 +54,13 @@ const MapContainer = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
+  console.log('REACT_APP_GOOGLE_MAPS_REACT_KEY', process.env.REACT_APP_GOOGLE_MAPS_REACT_KEY);
   return (
     <div className="map-container">
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_REACT_KEY }}
         center={centered}
-        defaultZoom={zoomLevel}
+        zoom={zoomLevel} // Updated zoom level prop
       >
         {offices.map((office) => (
           <Marker
