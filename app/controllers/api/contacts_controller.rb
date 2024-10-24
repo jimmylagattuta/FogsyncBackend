@@ -1,6 +1,7 @@
 module Api
     class ContactsController < ApplicationController
     skip_before_action :authenticate_user, only: [:create]
+    skip_before_action :verify_authenticity_token  # Disables CSRF protection for API requests
 
     def create
         contact_params = params.require(:contact).permit(:firstName, :lastName, :email, :phone, :message)

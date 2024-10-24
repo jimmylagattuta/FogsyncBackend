@@ -44,14 +44,14 @@ Rails.application.configure do
   }
 
   # Specify the asset host for serving images, stylesheets, and JavaScripts
-  config.asset_host = "http://bcbcarts.com"
+  config.asset_host = "http://www.bcbcarts.com"
 
   # Set Active Storage service (local storage by default)
   config.active_storage.service = :local
 
   # Action Mailer settings
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.asset_host = "https://bcbcarts.com"
+  config.action_mailer.asset_host = "https://www.bcbcarts.com"
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
