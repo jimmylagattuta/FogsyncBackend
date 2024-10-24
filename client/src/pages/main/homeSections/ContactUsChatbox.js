@@ -48,7 +48,7 @@ const ContactUsChatbox = () => {
     if (Object.keys(formErrors).length === 0) {
       const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
       try {
-        const response = await fetch('https://bcb-carts-f625407d6d04.herokuapp.com/contact', {
+        const response = await fetch('https://www.bcbcarts.com/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
