@@ -17,7 +17,7 @@ function Footer() {
       </div>
 
       <div className="footer-info">
-        <p className="copyright">© 2024 BCB Carts</p>
+        <p className="copyright">© {new Date().getFullYear()} BCB Carts. All rights reserved.</p>
         <div className="divider"></div>
         <p className="powered-by">Powered by James Lagattuta</p>
       </div>
