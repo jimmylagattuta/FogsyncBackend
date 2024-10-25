@@ -10,7 +10,7 @@
   /* Custom line for the reveal effect */
   .custom-line {
     border: none;
-    border-top: 1px solid #000; /* Line color */
+    border-top: 1px solid white; /* Line color */
     width: 0; /* Start with 0 width */
     margin: 20px auto;
     transition: width 0.2s ease-out;
@@ -34,6 +34,7 @@
     background: #f5f5f5;
     overflow: hidden;
     height: 100vh;
+    background-color: #2c3e50;
   }
   .diagonal-reveal {
     position: absolute;
@@ -70,17 +71,23 @@
   .company-title {
     font-size: 1.8em;
     font-weight: 700;
-    color: var(--navbar-bg-color);
+    color: white;
     margin-bottom: 10px;
   }
   
   .company-description {
     font-size: 1em;
     line-height: 1.4;
-    color: #2c3e50;
+    color: white;
   }
   
 /* Adjustments for screens 430px and up */
+@media (min-width: 300px) {
+  .company-diagonal-section {
+    height: 60vh;
+  }
+}
+
 @media (min-width: 430px) and (max-width: 767px) {
     .company-diagonal-section {
       padding: 30px 10px; /* Reduce top padding */

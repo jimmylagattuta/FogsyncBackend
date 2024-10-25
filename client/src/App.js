@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 
 import Home from './pages/main/Home';
 import Sales from './pages/main/Sales';
@@ -14,6 +14,13 @@ import Services from './pages/main/Services';
 import ContactUsChatbox from './pages/main/homeSections/ContactUsChatbox';
 import AccountForms from './components/AccountForms';
 import Social from './components/Social';
+import Footer from './components/Footer';
+
+function SocialContainer() {
+  const location = useLocation();  // useLocation() inside the component within Router
+
+  return location.pathname !== '/' ? <Social /> : null;  // Conditionally render based on route
+}
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,6 +31,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
+
 
   useEffect(() => {
     fetch("/me").then((res) => {
@@ -193,7 +201,8 @@ function App() {
         user={user}
         setUser={setUser}
       />
-      <Social />
+      <SocialContainer />
+      <Footer />
     </Router>
   );
 }

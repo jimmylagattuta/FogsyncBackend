@@ -2,7 +2,7 @@
 
 .social-media {
     background-color: var(--background-color);
-    padding: 20px 0 0 0;
+    padding: 20px 0 20px 0;
     text-align: center;
 }
 
@@ -58,8 +58,8 @@
     color: #69C9D0; /* TikTok blue-green */
 }
 
-.social-icon.instagram.in-view {
-    color: #E1306C; /* Instagram pinkish-red */
+.social-icon.youtube.in-view {
+    color: #FF0000; /* Youtube red */
 }
 
 .social-icon.pinterest.in-view {
@@ -68,6 +68,10 @@
 
 .social-icon.threads.in-view {
     color: #000000; /* Threads black */
+}
+
+.social-icon.instagram.in-view {
+    color: #E4405F; /* Threads black */
 }
 
 /* Disable shadow on other icons when one is hovered */
@@ -161,7 +165,7 @@
     }
 
     .social-icon {
-        font-size: 2rem;
+        font-size: 1rem;
         padding: 10px;
     }
     .contact-info {

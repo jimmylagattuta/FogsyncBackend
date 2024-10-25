@@ -63,6 +63,18 @@
     background-color: var(--navbar-bg-color);
   }
 
+  @media (min-width: 300px) {
+    .about-title {
+      font-size: 1.2em;
+    }
+    .about-description {
+      font-size: 0.8em;
+    }
+    .about-button {
+      font-size: 0.8em;
+    }
+  }
+
   /* Styles for larger screens */
   @media (min-width: 768px) {
     .about-content {

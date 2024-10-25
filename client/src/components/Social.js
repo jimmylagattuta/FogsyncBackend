@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faSnapchat, faTiktok, faInstagram, faPinterest, faThreads } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faSnapchat, faTiktok, faYoutube, faPinterest, faThreads, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import './Social.css';
 
 function Social() {
   const iconRefs = useRef([]);
-  const [isFacebookClicked, setIsFacebookClicked] = useState(false); // Toggle between Facebook and extra icons
-  const facebookContainerRef = useRef(null); // Ref for Facebook icons container
+  const [isFacebookClicked, setIsFacebookClicked] = useState(false); 
+  const facebookContainerRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -22,7 +22,6 @@ function Social() {
       { threshold: 0.1 }
     );
   
-    // Only observe icons if the Facebook section is not clicked
     if (!isFacebookClicked) {
       iconRefs.current.forEach((icon) => {
         if (icon) observer.observe(icon);
@@ -34,10 +33,8 @@ function Social() {
         if (icon) observer.unobserve(icon);
       });
     };
-  }, [isFacebookClicked]); // Re-run this effect when isFacebookClicked changes
-  
-  
-  // Handle clicking outside the Facebook icons
+  }, [isFacebookClicked]);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -45,7 +42,7 @@ function Social() {
         facebookContainerRef.current &&
         !facebookContainerRef.current.contains(event.target)
       ) {
-        setIsFacebookClicked(false); // Reset to original Facebook icon
+        setIsFacebookClicked(false);
       }
     };
 
@@ -57,7 +54,7 @@ function Social() {
   }, [isFacebookClicked]);
 
   const handleFacebookClick = () => {
-      setIsFacebookClicked(prevState => !prevState); // Toggle between showing and hiding extra icons
+      setIsFacebookClicked(prevState => !prevState);
   };
 
   return (
@@ -66,17 +63,15 @@ function Social() {
 
       <h2 className="social-media-title">Connect With Us</h2>
       <div className="social-icons" ref={facebookContainerRef}>
-        {/* Main Facebook icon */}
         <a
           className="social-icon facebook"
           ref={(el) => (iconRefs.current[0] = el)}
-          onClick={handleFacebookClick} // Show/hide additional icons when clicked
-          key="facebook-main" // Add key here
+          onClick={handleFacebookClick}
+          key="facebook-main"
         >
           <FontAwesomeIcon icon={faFacebook} />
         </a>
 
-        {/* Conditionally render the second and third icons based on click */}
         {isFacebookClicked && (
           <>
             <a
@@ -98,11 +93,10 @@ function Social() {
           </>
         )}
 
-        {/* Other social icons, shown only when Facebook is not clicked */}
         {!isFacebookClicked && (
           <>
             <a
-              href="https://snapchat.com"
+              href="https://www.snapchat.com/add/mebcbatyawho?sender_web_id=e45b430a-0cac-45b4-a794-4261d854c91c&device_type=ios&is_copy_url=true"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon snapchat"
@@ -112,7 +106,7 @@ function Social() {
               <FontAwesomeIcon icon={faSnapchat} />
             </a>
             <a
-              href="https://tiktok.com"
+              href="https://tiktok.com/@bcbcarts"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon tiktok"
@@ -122,17 +116,17 @@ function Social() {
               <FontAwesomeIcon icon={faTiktok} />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://m.youtube.com/@bcbcarts2640"
               target="_blank"
               rel="noopener noreferrer"
-              className="social-icon instagram"
+              className="social-icon youtube"
               ref={(el) => (iconRefs.current[3] = el)}
-              key="instagram"
+              key="youtube"
             >
-              <FontAwesomeIcon icon={faInstagram} />
+              <FontAwesomeIcon icon={faYoutube} />
             </a>
             <a
-              href="https://pinterest.com"
+              href="https://www.pinterest.com/bblackman0408/?invite_code=a5411783616e4987aa516c60050893e1&sender=801289096109711486"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon pinterest"
@@ -142,7 +136,7 @@ function Social() {
               <FontAwesomeIcon icon={faPinterest} />
             </a>
             <a
-              href="https://threads.net"
+              href="https://www.threads.net/@mebcbatyawho?invite=0"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon threads"
@@ -151,38 +145,21 @@ function Social() {
             >
               <FontAwesomeIcon icon={faThreads} />
             </a>
+            <a
+              href="https://www.instagram.com/mebcbatyawho/profilecard/?igsh=MzRlODBiNWFlZA=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon instagram"
+              ref={(el) => (iconRefs.current[6] = el)}
+              key="instagram"
+            >
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
           </>
         )}
       </div>
 
       <hr className="underline" />
-
-      <div className="contact-info">
-        <a
-          href="mailto:mebcb@yahoo.com"
-          className="contact-button email-button"
-        >
-          Email Us
-        </a>
-        <a
-          href="tel:+13233333471"
-          className="contact-button phone-button"
-        >
-          Call Long Beach, CA
-        </a>
-        <a
-          href="tel:+13233333471"
-          className="contact-button phone-button"
-        >
-          Call Griffin, GA
-        </a>
-      </div>
-      
-      <div className="footer-info">
-        <p className="copyright">© 2024 BCB Carts</p>
-        <div className="divider"></div>
-        <p className="powered-by">Powered by James Lagattuta</p>
-      </div>
     </div>
   );
 }
