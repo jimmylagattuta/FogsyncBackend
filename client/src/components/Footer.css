@@ -68,9 +68,39 @@
     height: 20px;
     display: none;
   }
-  
+  /* For screens 320px and above */
+@media (min-width: 320px) {
+    .contact-info {
+        padding: 30px 20px; /* Increase padding */
+        gap: 10px; /* Increase space between items */
+    }
+
+    .contact-button {
+        padding: 10px 15px; /* Larger padding for bigger screens */
+        max-width: 240px; /* Slightly larger width */
+    }
+
+    .contact-info a {
+        letter-spacing: 1.2px; /* Increase letter spacing for readability */
+    }
+}
   /* For screens 768px and above */
   @media (min-width: 768px) {
+    .contact-info {
+        flex-direction: row;
+        justify-content: space-around; /* Space between buttons */
+        padding: 40px 50px;
+    }
+
+    .contact-button {
+        padding: 12px 20px;
+        max-width: 260px; /* Larger button width */
+    }
+
+    .contact-info a {
+        font-size: 1.1rem;
+        letter-spacing: 1.5px; /* More elegant letter spacing */
+    }
     .footer-info {
       font-size: 1rem;
       padding: 20px;
@@ -95,5 +125,20 @@
     .footer-info {
       font-size: 1.1rem;
     }
+    .contact-info {
+        padding: 50px 100px; /* More padding for larger screens */
+        gap: 30px; /* More spacing between buttons */
+    }
+
+    .contact-button {
+        font-size: 1.2rem; /* Increase button font size */
+        padding: 15px 30px;
+        max-width: 300px; /* Larger button width */
+    }
+
+    .contact-info a {
+        font-size: 1.3rem; /* Larger font for larger screens */
+    }
+
   }
   
