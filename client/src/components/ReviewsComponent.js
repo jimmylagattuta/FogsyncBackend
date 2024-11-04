@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaQuoteLeft } from 'react-icons/fa';
 
 const ReviewComponent = ({ reviews }) => {
     // Filter only 4 or 5-star reviews
@@ -8,11 +9,14 @@ const ReviewComponent = ({ reviews }) => {
         <div className="review-container">
             {filteredReviews.map((review, index) => (
                 <div className="review-card" key={index}>
-                    <div className="review-header">
+                    <div className="review-icon">
+                        <FaQuoteLeft />
+                    </div>
+                    <p className="review-text">{review.text}</p>
+                    <div className="review-footer">
                         <span className="review-author">- {review.user.name}</span>
                         <span className="review-rating">⭐ {review.rating}</span>
                     </div>
-                    <p className="review-text">{review.text}</p>
                 </div>
             ))}
         </div>

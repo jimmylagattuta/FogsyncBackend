@@ -2,37 +2,61 @@
 .review-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
     padding: 15px;
 }
 
 .review-card {
-    background: linear-gradient(145deg, #ffffff, #e6e6e6);
-    border-radius: 15px;
-    box-shadow: 6px 6px 12px #b8b8b8, -6px -6px 12px #ffffff;
-    padding: 20px;
+    position: relative;
+    background: linear-gradient(135deg, #f0f8ff, #e0e7ff);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
 }
 
 .review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 8px 8px 16px #b3b3b3, -8px -8px 16px #ffffff;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.1);
 }
 
-.review-header {
+.review-icon {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    font-size: 4rem;
+    color: rgba(255, 215, 0, 0.2); /* Gold, semi-transparent */
+}
+
+.review-text {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #333;
+    font-family: 'Georgia, serif';
+    margin-bottom: 15px;
+}
+
+.review-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1rem;
-    font-weight: bold;
-    color: #3c3c3c;
-    margin-bottom: 10px;
+    color: #555;
+    font-weight: 500;
 }
 
-.review-text {
-    font-size: 0.95rem;
-    line-height: 1.4;
-    color: #4d4d4d;
+.review-author {
+    font-style: italic;
+    font-weight: bold;
+    color: #2b2b52;
+}
+
+.review-rating {
+    color: #ffd700; /* Gold color for rating stars */
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 /* Tablet view */
@@ -45,34 +69,34 @@
 
     .review-card {
         width: 48%; /* Two cards per row */
-        margin-bottom: 15px;
-    }
-
-    .review-header {
-        font-size: 1.1rem;
+        margin-bottom: 20px;
     }
 
     .review-text {
-        font-size: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .review-footer {
+        font-size: 1.1rem;
     }
 }
 
 /* Desktop view */
 @media (min-width: 1024px) {
     .review-container {
-        gap: 20px;
+        gap: 25px;
     }
 
     .review-card {
         width: 30%; /* Three cards per row */
-        padding: 25px;
-    }
-
-    .review-header {
-        font-size: 1.2rem;
+        padding: 30px;
     }
 
     .review-text {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
+    }
+
+    .review-footer {
+        font-size: 1.2rem;
     }
 }
