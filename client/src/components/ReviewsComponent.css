@@ -2,33 +2,37 @@
 .review-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+    gap: 15px;
+    padding: 15px;
 }
 
 .review-card {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    border-radius: 15px;
+    box-shadow: 6px 6px 12px #b8b8b8, -6px -6px 12px #ffffff;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 8px 8px 16px #b3b3b3, -8px -8px 16px #ffffff;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #3c3c3c;
+    margin-bottom: 10px;
 }
 
 .review-text {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-.review-footer {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.review-rating {
-    font-weight: bold;
-    color: #ff9800; /* Gold color for rating stars */
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #4d4d4d;
 }
 
 /* Tablet view */
@@ -36,30 +40,39 @@
     .review-container {
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: space-between;
     }
 
     .review-card {
         width: 48%; /* Two cards per row */
-        margin: 1%;
+        margin-bottom: 15px;
+    }
+
+    .review-header {
+        font-size: 1.1rem;
+    }
+
+    .review-text {
+        font-size: 1rem;
     }
 }
 
 /* Desktop view */
 @media (min-width: 1024px) {
     .review-container {
-        gap: 15px;
+        gap: 20px;
     }
 
     .review-card {
         width: 30%; /* Three cards per row */
-        padding: 20px;
+        padding: 25px;
+    }
+
+    .review-header {
+        font-size: 1.2rem;
     }
 
     .review-text {
         font-size: 1.1rem;
-    }
-
-    .review-footer {
-        font-size: 1rem;
     }
 }

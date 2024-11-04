@@ -8,11 +8,11 @@ const ReviewComponent = ({ reviews }) => {
         <div className="review-container">
             {filteredReviews.map((review, index) => (
                 <div className="review-card" key={index}>
-                    <p className="review-text">{review.text}</p>
-                    <div className="review-footer">
-                        <span className="review-rating">⭐ {review.rating}</span>
+                    <div className="review-header">
                         <span className="review-author">- {review.user.name}</span>
+                        <span className="review-rating">⭐ {review.rating}</span>
                     </div>
+                    <p className="review-text">{review.text}</p>
                 </div>
             ))}
         </div>
