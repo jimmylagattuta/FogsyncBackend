@@ -4,17 +4,19 @@
     flex-direction: column;
     gap: 20px;
     padding: 15px;
+    align-items: center;
 }
 
 .review-card {
     position: relative;
-    background: linear-gradient(135deg, #f7f7f7, #eaeaea);
+    background: #ffffff;
     border-radius: 20px;
     padding: 25px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
-    margin: 0 auto; /* Center cards */
-    max-width: 95%; /* Ensure it fits well on mobile */
+    max-width: 95%; /* Fit well on mobile */
+    width: 100%; /* Expand to full width */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto;
 }
 
 .review-card:hover {
@@ -30,11 +32,19 @@
 }
 
 .review-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+.review-avatar-initial {
+    width: 50px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
     border-radius: 50%;
     background-color: #ffcc00; /* Placeholder color */
     color: #fff;
@@ -48,37 +58,62 @@
     color: #2c3e50;
 }
 
+.verified-icon {
+    color: #0f9d58; /* Green color for verification */
+    margin-left: 5px;
+    font-size: 1rem;
+}
+
+.review-date {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.review-icon {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 4rem;
+    color: rgba(255, 215, 0, 0.15); /* Faded gold */
+}
+
 .review-text {
     font-size: 1rem;
     line-height: 1.5;
     color: #333;
     font-family: 'Georgia, serif';
     margin: 15px 0;
+    text-align: justify;
 }
 
 .review-footer {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     font-size: 0.9rem;
     color: #555;
-    font-weight: 500;
     margin-top: 15px;
 }
 
 .review-rating {
-    margin-left: auto;
     color: #ffcc00; /* Gold color */
     font-size: 1.2rem;
     font-weight: bold;
 }
 
-.quote-icon {
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    font-size: 5rem;
-    color: rgba(255, 215, 0, 0.15); /* Faded gold */
+.review-link {
+    color: #0073bb; /* Yelp blue */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.review-link:hover {
+    text-decoration: underline;
+}
+
+/* Center single review */
+.review-container.single-review .review-card {
+    width: 30%; /* Take one-third of the screen */
 }
 
 /* Tablet view */
@@ -104,5 +139,6 @@
     .review-card {
         width: 30%; /* Three cards per row */
         padding: 30px;
+        margin-top: 40px;
     }
 }
