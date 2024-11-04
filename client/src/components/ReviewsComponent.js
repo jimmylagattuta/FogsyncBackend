@@ -6,19 +6,20 @@ const ReviewComponent = ({ reviews }) => {
     const filteredReviews = reviews.filter(review => review.rating >= 4);
 
     return (
-        <div className="review-container">
-            {filteredReviews.map((review, index) => (
-                <div className="review-card" key={index}>
-                    <div className="review-icon">
-                        <FaQuoteLeft />
-                    </div>
-                    <p className="review-text">{review.text}</p>
-                    <div className="review-footer">
-                        <span className="review-author">- {review.user.name}</span>
-                        <span className="review-rating">⭐ {review.rating}</span>
-                    </div>
+        <div class="review-container">
+            <div class="review-card">
+                <div class="quote-icon">“</div>
+                <div class="review-header">
+                    <div class="review-avatar">M</div>
+                    <div class="review-name">Marylou Taccola</div>
                 </div>
-            ))}
+                <p class="review-text">
+                    I had a rotator cuff surgery. Dr. Erling Ho is by far the best doctor/surgeon...
+                </p>
+                <div class="review-footer">
+                    <span class="review-rating">⭐ 5</span>
+                </div>
+            </div>
         </div>
     );
 };

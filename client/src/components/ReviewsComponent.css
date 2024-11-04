@@ -8,29 +8,44 @@
 
 .review-card {
     position: relative;
-    background-color: #ffffff;
-    border-radius: 15px;
-    border: 2px solid #f1f1f1;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.05);
-    padding: 20px;
+    background: linear-gradient(135deg, #f7f7f7, #eaeaea);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
+    margin: 0 auto; /* Center cards */
+    max-width: 95%; /* Ensure it fits well on mobile */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-    max-width: 100%; /* Ensures cards fit on mobile screens */
-    margin: 0 auto; /* Centers cards */
 }
 
 .review-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-.review-icon {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    font-size: 3rem;
-    color: #ffcc00; /* Gold color */
-    opacity: 0.3;
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.review-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffcc00; /* Placeholder color */
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.review-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
 }
 
 .review-text {
@@ -38,31 +53,32 @@
     line-height: 1.5;
     color: #333;
     font-family: 'Georgia, serif';
-    margin: 20px 0;
-    text-align: justify; /* Ensures better text readability */
+    margin: 15px 0;
 }
 
 .review-footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     font-size: 0.9rem;
     color: #555;
     font-weight: 500;
-    padding-top: 10px;
-    border-top: 1px solid #eaeaea;
-}
-
-.review-author {
-    font-style: italic;
-    font-weight: bold;
-    color: #2c3e50;
+    margin-top: 15px;
 }
 
 .review-rating {
+    margin-left: auto;
     color: #ffcc00; /* Gold color */
     font-size: 1.2rem;
     font-weight: bold;
+}
+
+.quote-icon {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 5rem;
+    color: rgba(255, 215, 0, 0.15); /* Faded gold */
 }
 
 /* Tablet view */
@@ -77,14 +93,6 @@
         width: 48%; /* Two cards per row */
         margin-bottom: 20px;
     }
-
-    .review-text {
-        font-size: 1.1rem;
-    }
-
-    .review-footer {
-        font-size: 1rem;
-    }
 }
 
 /* Desktop view */
@@ -95,14 +103,6 @@
 
     .review-card {
         width: 30%; /* Three cards per row */
-        padding: 25px;
-    }
-
-    .review-text {
-        font-size: 1.2rem;
-    }
-
-    .review-footer {
-        font-size: 1.1rem;
+        padding: 30px;
     }
 }
