@@ -200,7 +200,7 @@ function App() {
       </div>
       <div className="content" style={{ paddingTop: `${navbarHeight}px` }}>
         <Routes>
-          <Route path="/" element={<Home scrollToContact={scrollToContact} />} />
+          <Route path="/" element={<Home scrollToContact={scrollToContact} reviews={reviews} />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/rentals" element={<Rentals />} />
           <Route path="/parts" element={<Parts />} />
