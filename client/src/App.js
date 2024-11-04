@@ -34,6 +34,12 @@ function App() {
   const dropdownRef = useRef(null);
   const contactSectionRef = useRef(null);
 
+  const scrollToContact = () => {
+    const yOffset = -navbarHeight; // Adjust the offset by the height of the navbar
+    const yPosition = contactSectionRef.current.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: yPosition, behavior: 'smooth' });
+  };
+
   useEffect(() => {
     fetch("/me").then((res) => {
       if (res.ok) {
