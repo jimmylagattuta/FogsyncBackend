@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaQuoteLeft } from 'react-icons/fa';
+import './ReviewsComponent.css';
 
 const ReviewsComponent = ({ reviews }) => {
     // Filter only 4 or 5-star reviews
