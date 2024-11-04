@@ -9,7 +9,7 @@ const images = [
   'https://i.imgur.com/bRqbId5.jpeg'
 ];
 
-const Intro = () => {
+const Intro = ({ scrollToContact }) => {
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
@@ -23,9 +23,9 @@ const Intro = () => {
     <div className="hero-section">
       <div className="hero-overlay">
         <div className="hero-text">
-          <h1>BCB Carts</h1>
-          <p>Here is a short description of whatever you want.</p>
-          <button className="hero-button">Your Button</button>
+          <h1>Welcome to BCB Carts!</h1>
+          <p>Your Trusted Partner in Leisure-Filled Electric Vehicles</p>
+          <button className="hero-button" onClick={scrollToContact}>Contact Us</button>
         </div>
       </div>
       <div className="hero-image-container">

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import './ContactUsChatbox.css';
 
-const ContactUsChatbox = () => {
+const ContactUsChatbox = forwardRef((props, ref) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -76,7 +76,7 @@ const ContactUsChatbox = () => {
   };
 
   return (
-    <div className="contact-section">
+    <div className="contact-section" ref={ref}>
       <div className="contact-section-header">
         <h2>Send A Message To BCB Carts</h2>
         <p>If you have any inquiries, concerns, or comments regarding BCB Carts, please fill out the short contact form below.</p>

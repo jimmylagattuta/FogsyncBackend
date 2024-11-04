@@ -32,7 +32,7 @@ function App() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [reviews, setReviews] = useState([]);
   const dropdownRef = useRef(null);
-
+  const contactSectionRef = useRef(null);
 
   useEffect(() => {
     fetch("/me").then((res) => {
@@ -194,7 +194,7 @@ function App() {
       </div>
       <div className="content" style={{ paddingTop: `${navbarHeight}px` }}>
         <Routes>
-          <Route path="/" element={<Home reviews={reviews} />} />
+          <Route path="/" element={<Home scrollToContact={scrollToContact} />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/rentals" element={<Rentals />} />
           <Route path="/parts" element={<Parts />} />
@@ -205,7 +205,9 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
-      <ContactUsChatbox />
+      <div ref={contactSectionRef}>
+        <ContactUsChatbox />
+      </div>
       <AccountForms
         toggleLoginForm={toggleLoginForm}
         toggleSignupForm={toggleSignupForm}

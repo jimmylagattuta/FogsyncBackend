@@ -27,9 +27,9 @@ function Company() {
       <div className="diagonal-reveal"></div>
       <div className="company-content">
         <hr className="custom-line" /> {/* Line added above */}
-        <h2 className="company-title">Slogan/Title Here</h2>
+        <h2 className="company-title">At BCB Carts</h2>
         <p className="company-description">
-          About BCB Carts content here. Delivering excellence etc with a personalized touch. Our experts etc are here to meet your needs with precision and professionalism etc. Delivering excellence etc with a personalized touch. Our experts etc are here to meet your needs with precision and professionalism etc.
+            We specialize in providing high-quality electric carts and allied services. With locations in Long Beach, California, and Griffin or Locust Grove, Georgia, we are dedicated to offering top-notch solutions for your low-speed vehicle needs.
         </p>
         <hr className="custom-line" /> {/* Line added below */}
       </div>

@@ -8,11 +8,11 @@ import ServiceList from './homeSections/ServiceList';
 import MapContainer from './homeSections/MapContainer';
 import ReviewsComponent from '../../components/ReviewsComponent';
 
-const Home = ({ reviews }) => {
+const Home = ({ scrollToContact, reviews }) => {
   console.log('Home');
   return (
     <div>
-      <Intro />
+      <Intro scrollToContact={scrollToContact} />
       <Social />
       <Company />
       <AboutSection />
