@@ -54,7 +54,7 @@ class Api::JobsController < ApplicationController
             business_url = URI("https://api.yelp.com/v3/businesses/#{business[:alias]}")
             puts "Requesting Yelp business info for: #{business[:alias]}"
             business_request = Net::HTTP::Get.new(business_url)
-            business_request["Authorization"] = "Bearer #{ENV['YELP_API_KEY']}"
+            business_request["Authorization"] = "Bearer #{ENV['REACT_YELP_API_KEY']}"
             business_response = http.request(business_request)
             business_parsed_response = JSON.parse(business_response.body)
 
@@ -66,7 +66,7 @@ class Api::JobsController < ApplicationController
             url = URI("https://api.yelp.com/v3/businesses/#{business[:alias]}/reviews")
             puts "Fetching reviews for: #{business[:alias]}"
             request = Net::HTTP::Get.new(url)
-            request["Authorization"] = "Bearer #{ENV['YELP_API_KEY']}"
+            request["Authorization"] = "Bearer #{ENV['REACT_YELP_API_KEY']}"
             response = http.request(request)
             parsed_response = JSON.parse(response.body)
 
