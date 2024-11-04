@@ -10,6 +10,9 @@ import ReviewsComponent from '../../components/ReviewsComponent';
 
 const Home = ({ scrollToContact, reviews }) => {
   console.log('Home');
+  console.log('scrollToContact', scrollToContact);
+  console.log('reviews', reviews);
+
   return (
     <div>
       <Intro scrollToContact={scrollToContact} />

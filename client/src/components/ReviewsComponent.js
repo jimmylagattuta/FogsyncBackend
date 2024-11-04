@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaQuoteLeft } from 'react-icons/fa';
 
-const ReviewComponent = ({ reviews }) => {
+const ReviewsComponent = ({ reviews }) => {
     // Filter only 4 or 5-star reviews
     const filteredReviews = reviews.filter(review => review.rating >= 4);
 
@@ -23,4 +23,4 @@ const ReviewComponent = ({ reviews }) => {
     );
 };
 
-export default ReviewComponent;
+export default ReviewsComponent;
