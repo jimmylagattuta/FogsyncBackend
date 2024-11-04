@@ -6,7 +6,7 @@ const ReviewComponent = ({ reviews }) => {
     const filteredReviews = reviews.filter(review => review.rating >= 4);
 
     return (
-        <div className={`review-container ${filteredReviews.length === 1 ? 'single-review' : ''}`}>
+        <div className="review-container">
             {filteredReviews.map((review, index) => (
                 <div className="review-card" key={index}>
                     <div className="review-icon">
