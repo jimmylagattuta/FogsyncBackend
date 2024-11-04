@@ -45,6 +45,17 @@ function App() {
     });
   }, []);
 
+  
+  useEffect(() => {
+    fetch("/get_yelp_reviews").then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          console.log('data', data);
+        });
+      }
+    });
+  }, []);
+
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
