@@ -175,6 +175,6 @@ const ContactUsChatbox = forwardRef((props, ref) => {
       )}
     </div>
   );
-};
+});
 
 export default ContactUsChatbox;
