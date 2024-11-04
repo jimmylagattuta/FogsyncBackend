@@ -6,8 +6,9 @@ import Company from './homeSections/Company';
 import AboutSection from './homeSections/AboutSection';
 import ServiceList from './homeSections/ServiceList';
 import MapContainer from './homeSections/MapContainer';
+import ReviewsComponent from './homeSections/ReviewsComponent';
 
-const Home = () => {
+const Home = ({ reviews }) => {
   console.log('Home');
   return (
     <div>
@@ -17,6 +18,7 @@ const Home = () => {
       <AboutSection />
       <ServiceList />
       <MapContainer />
+      <ReviewsComponent reviews={reviews} />
     </div>
   );
 }

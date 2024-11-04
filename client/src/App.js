@@ -30,6 +30,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [reviews, setReviews] = useState([]);
   const dropdownRef = useRef(null);
 
 
@@ -51,6 +52,7 @@ function App() {
       if (res.ok) {
         res.json().then((data) => {
           console.log('data', data);
+          setReviews(data);
         });
       }
     });
@@ -192,7 +194,7 @@ function App() {
       </div>
       <div className="content" style={{ paddingTop: `${navbarHeight}px` }}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home reviews={reviews} />} />
           <Route path="/sales" element={<Sales />} />
           <Route path="/rentals" element={<Rentals />} />
           <Route path="/parts" element={<Parts />} />
