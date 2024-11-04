@@ -47,7 +47,7 @@ function App() {
 
   
   useEffect(() => {
-    fetch("/get_yelp_reviews").then((res) => {
+    fetch("/pull_yelp_cache").then((res) => {
       if (res.ok) {
         res.json().then((data) => {
           console.log('data', data);
