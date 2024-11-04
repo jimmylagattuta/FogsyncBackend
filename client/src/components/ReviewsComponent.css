@@ -74,7 +74,7 @@
     top: -10px;
     left: -10px;
     font-size: 4rem;
-    color: rgba(255, 215, 0, 0.15); /* Faded gold */
+    color: rgba(44, 62, 80, 0.15); /* Faded gold */
 }
 
 .review-text {
@@ -96,7 +96,7 @@
 }
 
 .review-rating {
-    color: #2c3e50;
+    color: #ffcc00; /* Gold color */
     font-size: 1.2rem;
     font-weight: bold;
 }
