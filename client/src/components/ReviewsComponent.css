@@ -10,25 +10,27 @@
     position: relative;
     background-color: #ffffff;
     border-radius: 15px;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.06);
+    border: 2px solid #f1f1f1;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.05);
     padding: 20px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
+    max-width: 100%; /* Ensures cards fit on mobile screens */
+    margin: 0 auto; /* Centers cards */
 }
 
 .review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 4px 4px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.1);
 }
 
 .review-icon {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 2.5rem;
+    top: 15px;
+    left: 15px;
+    font-size: 3rem;
     color: #ffcc00; /* Gold color */
-    opacity: 0.4;
+    opacity: 0.3;
 }
 
 .review-text {
@@ -37,6 +39,7 @@
     color: #333;
     font-family: 'Georgia, serif';
     margin: 20px 0;
+    text-align: justify; /* Ensures better text readability */
 }
 
 .review-footer {
@@ -46,6 +49,8 @@
     font-size: 0.9rem;
     color: #555;
     font-weight: 500;
+    padding-top: 10px;
+    border-top: 1px solid #eaeaea;
 }
 
 .review-author {
@@ -56,7 +61,7 @@
 
 .review-rating {
     color: #ffcc00; /* Gold color */
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
