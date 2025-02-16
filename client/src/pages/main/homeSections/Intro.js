@@ -26,56 +26,41 @@ const imagesDesktop = [
 ];
 
 const Intro = ({ scrollToContact }) => {
-  const [currentImage, setCurrentImage] = useState(0);
-  // Default to mobile images
   const [images, setImages] = useState(imagesMobile);
-  // Track whether we're still on the initial load for index 0
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  // Flag to trigger fade-out after 4 seconds.
+  const [fade, setFade] = useState(false);
 
-  useEffect(() => {
-    try {
-      const width = window.innerWidth;
-      console.log("Window width:", width);
-      if (width >= 1024) {
-        setImages(imagesDesktop);
-        console.log("Using desktop images.");
-      } else if (width >= 768) {
-        setImages(imagesTablet);
-        console.log("Using tablet images.");
-      } else {
-        setImages(imagesMobile);
-        console.log("Using mobile images.");
-      }
-    } catch (error) {
-      console.error("Failed to set images based on screen width:", error);
+  // Update images based on current window width.
+  const updateImages = () => {
+    const width = window.innerWidth;
+    console.log("Window width:", width);
+    if (width >= 1024) {
+      setImages(imagesDesktop);
+      console.log("Using desktop images.");
+    } else if (width >= 768) {
+      setImages(imagesTablet);
+      console.log("Using tablet images.");
+    } else {
+      setImages(imagesMobile);
+      console.log("Using mobile images.");
     }
+  };
+
+  // On mount and resize, update the image set.
+  useEffect(() => {
+    updateImages();
+    window.addEventListener("resize", updateImages);
+    return () => window.removeEventListener("resize", updateImages);
   }, []);
 
+  // Start fade-out after 4 seconds.
   useEffect(() => {
-    try {
-      const interval = setInterval(() => {
-        setCurrentImage((prevImage) => {
-          const nextImage = (prevImage + 1) % images.length;
-          console.log("Switching image to index:", nextImage);
-          return nextImage;
-        });
-      }, 3000); // Switches images every 3 seconds
-      console.log("Image interval started.");
-      return () => {
-        clearInterval(interval);
-        console.log("Image interval cleared.");
-      };
-    } catch (error) {
-      console.error("Failed to start image interval:", error);
-    }
-  }, [images]);
-
-  useEffect(() => {
-    if (currentImage !== 0 && isInitialLoad) {
-      console.log("Initial load complete; first image has been displayed.");
-      setIsInitialLoad(false);
-    }
-  }, [currentImage, isInitialLoad]);
+    const timer = setTimeout(() => {
+      setFade(true);
+      console.log("Fade out started.");
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="hero-section">
@@ -87,18 +72,18 @@ const Intro = ({ scrollToContact }) => {
         </div>
       </div>
       <div className="hero-image-container">
-        {images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt="Slideshow"
-            loading={index === 0 ? "eager" : "lazy"}
-            className={`hero-image ${
-              !isInitialLoad ? (index === currentImage ? 'fade-in' : 'fade-out') : ''
-            }`}
-            style={index === 0 && isInitialLoad ? { opacity: 1, transition: 'none' } : {}}
-          />
-        ))}
+        {/* Render only the first image */}
+        <img
+          src={images[0]}
+          alt="Hero"
+          loading="eager"
+          className="hero-image"
+          style={
+            !fade
+              ? { opacity: 1, transition: 'none' }  // Immediately show image with no transition.
+              : { opacity: 0, transition: 'opacity 1s ease-out' } // Fade out over 1s.
+          }
+        />
       </div>
     </div>
   );
