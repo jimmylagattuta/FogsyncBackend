@@ -9,7 +9,7 @@ export default function Intro({ scrollToContact }) {
   const [currentImage, setCurrentImage] = useState(0);
   const [images, setImages] = useState(mobileImages);
 
-  // Decide which array to use based on screen width
+  // Select the correct image array based on window width
   const handleResize = () => {
     const width = window.innerWidth;
     if (width >= 1024) {
@@ -21,14 +21,14 @@ export default function Intro({ scrollToContact }) {
     }
   };
 
-  // On mount and when window resizes
+  // Run on mount and whenever the window is resized
   useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Cycle through images every 4 seconds
+  // Cycle through images every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage(prev => (prev + 1) % images.length);
@@ -47,15 +47,13 @@ export default function Intro({ scrollToContact }) {
           </button>
         </div>
       </div>
-
       <div className="hero-image-container">
         {images.map((image, index) => (
           <img
             key={index}
             src={image}
             alt={`Slide ${index + 1}`}
-            // Only the current image is displayed; others are hidden
-            className={`hero-image ${index === currentImage ? 'show-slide' : 'hide-slide'}`}
+            className={`hero-image ${index === currentImage ? 'fade-in' : 'fade-out'}`}
           />
         ))}
       </div>
