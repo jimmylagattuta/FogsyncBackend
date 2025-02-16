@@ -12,6 +12,7 @@ import FAQ from './pages/main/FAQ';
 import Contact from './pages/main/Contact';
 import Services from './pages/main/Services';
 import ContactUsChatbox from './pages/main/homeSections/ContactUsChatbox';
+import SEOFriendlyHomepage from './pages/main/homeSections/SEOFriendlyHomepage';
 import AccountForms from './components/AccountForms';
 import Social from './components/Social';
 import Footer from './components/Footer';
@@ -211,6 +212,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
+      <SEOFriendlyHomepage />
       <div ref={contactSectionRef}>
         <ContactUsChatbox />
       </div>
