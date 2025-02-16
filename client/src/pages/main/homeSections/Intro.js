@@ -32,22 +32,31 @@ const Intro = ({ scrollToContact }) => {
   // Controls the opacity for the second image.
   const [secondOpacity, setSecondOpacity] = useState(0);
 
-  // Update images based on current window width.
-  const updateImages = () => {
+   // Dynamically load the correct image array based on screen width
+   const updateImages = async () => {
     const width = window.innerWidth;
-    console.log("Window width:", width);
-    if (width >= 1024) {
-      setImages(imagesDesktop);
-      console.log("Using desktop images.");
-    } else if (width >= 768) {
-      setImages(imagesTablet);
-      console.log("Using tablet images.");
-    } else {
-      setImages(imagesMobile);
-      console.log("Using mobile images.");
+    let imagesArr; // single variable to hold whichever array we import
+
+    try {
+      if (width >= 1024) {
+        const module = await import('../../../images/desktopImages.js');
+        imagesArr = module.default;
+        console.log('Using desktop images.');
+      } else if (width >= 768) {
+        const module = await import('../../../images/tabletImages.js');
+        imagesArr = module.default;
+        console.log('Using tablet images.');
+      } else {
+        const module = await import('../../../images/mobileImages.js');
+        imagesArr = module.default;
+        console.log('Using mobile images.');
+      }
+
+      setImages(imagesArr);
+    } catch (err) {
+      console.error('Error loading images:', err);
     }
   };
-
   // On mount and resize, update the image set.
   useEffect(() => {
     updateImages();
