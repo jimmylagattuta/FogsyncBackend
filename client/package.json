@@ -55,6 +55,7 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.22.5",
+    "critical": "^7.2.1",
     "cross-env": "^7.0.3"
   }
 }
