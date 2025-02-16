@@ -33,9 +33,9 @@ class ApplicationController < ActionController::Base
       head :ok
     end
   
-    def redirect_to_root
-      redirect_to root_path
-    end
+    # def redirect_to_root
+    #   redirect_to root_path
+    # end
   
     private
   
