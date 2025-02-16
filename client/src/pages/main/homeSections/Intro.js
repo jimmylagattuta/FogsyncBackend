@@ -1,88 +1,71 @@
 import React, { useState, useEffect } from 'react';
 import './Intro.css';
 
-const imagesMobile = [
-  "https://i.postimg.cc/MpFYWV0g/HDAl-Z7d-1.webp",
-  "https://i.postimg.cc/nr2vNDcR/fiqweb3-1.webp",
-  "https://i.postimg.cc/7PKJ8DnW/d-Rbh-Xia-1-1.webp",
-  "https://i.postimg.cc/mDRjqRyr/7-K3-Uz6-A-1-1-2.webp",
-  "https://i.postimg.cc/vH1r0cwz/b-Rqb-Id5-2-1.webp"
-];
-
-const imagesTablet = [
-  "https://i.postimg.cc/tgrdrPJB/HDAl-Z7d-3-1.webp",
-  "https://i.postimg.cc/4NC6FX4R/fiqweb3-3.webp",
-  "https://i.postimg.cc/9fNTPhgS/d-Rbh-Xia-2.webp",
-  "https://i.postimg.cc/PJ1wk8fs/7-K3-Uz6-A-1-1-3.webp",
-  "https://i.postimg.cc/CM8D89GP/b-Rqb-Id5-2-2.webp"
-];
-
-const imagesDesktop = [
-  "https://i.postimg.cc/Wb234yXJ/HDAl-Z7d-4.webp",
-  "https://i.postimg.cc/K8MdhGB7/fiqweb3-5.webp",
-  "https://i.postimg.cc/kGHhLz5h/d-Rbh-Xia-3.webp",
-  "https://i.postimg.cc/Jnv22S0Y/7-K3-Uz6-A-1-2.webp",
-  "https://i.postimg.cc/d3CxPnTs/b-Rqb-Id5-3.webp"
-];
-
-const Intro = ({ scrollToContact }) => {
-  const [images, setImages] = useState(imagesMobile);
-  // 'fade' triggers the transition phase after 4 seconds.
+export default function Intro({ scrollToContact }) {
+  const [imgs, setImgs] = useState([]);
   const [fade, setFade] = useState(false);
-  // Controls the opacity for the second image.
   const [secondOpacity, setSecondOpacity] = useState(0);
 
-   // Dynamically load the correct image array based on screen width
-   const updateImages = async () => {
+  // Dynamically import images based on current screen width
+  const handleResize = async () => {
     const width = window.innerWidth;
-    let imagesArr; // single variable to hold whichever array we import
+    // Decide which file to load
+    const path =
+      width >= 1024
+        ? '../../../images/desktopImages.js'
+        : width >= 768
+        ? '../../../images/tabletImages.js'
+        : '../../../images/mobileImages.js';
 
     try {
-      if (width >= 1024) {
-        const module = await import('../../../images/desktopImages.js');
-        imagesArr = module.default;
-        console.log('Using desktop images.');
-      } else if (width >= 768) {
-        const module = await import('../../../images/tabletImages.js');
-        imagesArr = module.default;
-        console.log('Using tablet images.');
-      } else {
-        const module = await import('../../../images/mobileImages.js');
-        imagesArr = module.default;
-        console.log('Using mobile images.');
-      }
-
-      setImages(imagesArr);
-    } catch (err) {
-      console.error('Error loading images:', err);
+      const mod = await import(path);
+      setImgs(mod.default); // e.g., [url1, url2, url3, url4, url5]
+    } catch (e) {
+      console.error('Error loading images:', e);
     }
   };
-  // On mount and resize, update the image set.
+
+  // Load correct images on mount & handle window resizing
   useEffect(() => {
-    updateImages();
-    window.addEventListener("resize", updateImages);
-    return () => window.removeEventListener("resize", updateImages);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // After 4 seconds, trigger the fade transition.
+  // Wait 4 seconds, then fade out the first image
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setFade(true);
-      console.log("Fade out started.");
-    }, 4000);
+    const timer = setTimeout(() => setFade(true), 4000);
     return () => clearTimeout(timer);
   }, []);
 
-  // When fade is triggered, start the second image fade-in after a slight delay.
+  // Once fade is triggered, fade in the second image after a brief delay
   useEffect(() => {
     if (fade) {
-      const timer = setTimeout(() => {
-        setSecondOpacity(1);
-        console.log("Second image fade in started.");
-      }, 50);
+      const timer = setTimeout(() => setSecondOpacity(1), 50);
       return () => clearTimeout(timer);
     }
   }, [fade]);
+
+  // If images not loaded yet, show a quick fallback or nothing
+  if (!imgs.length) {
+    return (
+      <div className="hero-section">
+        <div className="hero-overlay">
+          <div className="hero-text">
+            <h1>Welcome to BCB Carts!</h1>
+            <p>Your Trusted Partner in Leisure-Filled Electric Vehicles</p>
+            <button className="hero-button" onClick={scrollToContact}>
+              Contact Us
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // We'll fade from imgs[3] (the 4th image) to imgs[4] (the 5th image).
+  const firstImg = imgs[3];
+  const secondImg = imgs[4];
 
   return (
     <div className="hero-section">
@@ -90,13 +73,16 @@ const Intro = ({ scrollToContact }) => {
         <div className="hero-text">
           <h1>Welcome to BCB Carts!</h1>
           <p>Your Trusted Partner in Leisure-Filled Electric Vehicles</p>
-          <button className="hero-button" onClick={scrollToContact}>Contact Us</button>
+          <button className="hero-button" onClick={scrollToContact}>
+            Contact Us
+          </button>
         </div>
       </div>
+
       <div className="hero-image-container">
-        {/* First Image: Visible immediately, then fades out */}
+        {/* First image: visible immediately, then fades out after 4s */}
         <img
-          src={images[0]}
+          src={firstImg}
           alt="Hero"
           loading="eager"
           className="hero-image"
@@ -106,10 +92,11 @@ const Intro = ({ scrollToContact }) => {
               : { opacity: 0, transition: 'opacity 1s ease-out' }
           }
         />
-        {/* Second Image: Lazily loaded, starts with opacity 0 then fades in */}
-        {fade && (
+
+        {/* Second image: starts at opacity 0, then fades in once fade === true */}
+        {fade && secondImg && (
           <img
-            src={images[1]}
+            src={secondImg}
             alt="Hero 2"
             loading="lazy"
             className="hero-image"
@@ -122,6 +109,4 @@ const Intro = ({ scrollToContact }) => {
       </div>
     </div>
   );
-};
-
-export default Intro;
+}
