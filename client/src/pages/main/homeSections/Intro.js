@@ -27,8 +27,10 @@ const imagesDesktop = [
 
 const Intro = ({ scrollToContact }) => {
   const [currentImage, setCurrentImage] = useState(0);
-  // New state: default to mobile images
+  // Default to mobile images
   const [images, setImages] = useState(imagesMobile);
+  // State to determine if we're still on the first load
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   useEffect(() => {
     const width = window.innerWidth;
@@ -44,9 +46,16 @@ const Intro = ({ scrollToContact }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-    }, 3000); // Switch images every 3 seconds
+    }, 3000); // Switches images every 3 seconds
     return () => clearInterval(interval);
   }, [images]);
+
+  // Once the slideshow advances past the first image, disable the initial load flag.
+  useEffect(() => {
+    if (currentImage !== 0 && isInitialLoad) {
+      setIsInitialLoad(false);
+    }
+  }, [currentImage, isInitialLoad]);
 
   return (
     <div className="hero-section">
@@ -64,7 +73,11 @@ const Intro = ({ scrollToContact }) => {
             src={image}
             alt="Slideshow"
             loading={index === 0 ? "eager" : "lazy"}
-            className={`hero-image ${index === currentImage ? 'fade-in' : 'fade-out'}`}
+            className={`hero-image ${
+              isInitialLoad && index === 0
+                ? '' // The first image shows immediately without fade effect
+                : (index === currentImage ? 'fade-in' : 'fade-out')
+            }`}
           />
         ))}
       </div>
