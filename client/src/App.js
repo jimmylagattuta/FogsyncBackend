@@ -132,7 +132,7 @@ function App() {
         <div className="navbar-top">
           <Link to="/" className="navbar-title-container">
             <span className="navbar-title">BCB</span>
-            <img src={`${process.env.PUBLIC_URL}/BCBLogo.jpg`} className="navbar-logo" alt="logo" />
+            <img src="https://i.postimg.cc/vT5Y3Jbb/BCBLogo-1.webp" className="navbar-logo" alt="logo" />
             <span className="navbar-subtitle">Carts</span>
           </Link>
           {window.innerWidth <= 860 ? (
