@@ -9,30 +9,42 @@ const imagesMobile = [
   "https://i.postimg.cc/vH1r0cwz/b-Rqb-Id5-2-1.webp"
 ];
 
+const imagesTablet = [
+  "https://i.postimg.cc/tgrdrPJB/HDAl-Z7d-3-1.webp",
+  "https://i.postimg.cc/4NC6FX4R/fiqweb3-3.webp",
+  "https://i.postimg.cc/9fNTPhgS/d-Rbh-Xia-2.webp",
+  "https://i.postimg.cc/PJ1wk8fs/7-K3-Uz6-A-1-1-3.webp",
+  "https://i.postimg.cc/CM8D89GP/b-Rqb-Id5-2-2.webp"
+];
+
 const imagesDesktop = [
-  'https://i.imgur.com/HDAlZ7d.jpeg',
-  'https://i.imgur.com/fiqweb3.jpeg',
-  'https://i.imgur.com/dRbhXia.jpeg',
-  'https://i.imgur.com/7K3Uz6A.jpeg',
-  'https://i.imgur.com/bRqbId5.jpeg'
+  "https://i.postimg.cc/Wb234yXJ/HDAl-Z7d-4.webp",
+  "https://i.postimg.cc/K8MdhGB7/fiqweb3-5.webp",
+  "https://i.postimg.cc/kGHhLz5h/d-Rbh-Xia-3.webp",
+  "https://i.postimg.cc/Jnv22S0Y/7-K3-Uz6-A-1-2.webp",
+  "https://i.postimg.cc/d3CxPnTs/b-Rqb-Id5-3.webp"
 ];
 
 const Intro = ({ scrollToContact }) => {
   const [currentImage, setCurrentImage] = useState(0);
-  // New state: start with mobile images
+  // New state: default to mobile images
   const [images, setImages] = useState(imagesMobile);
 
   useEffect(() => {
-    // Check if the screen is above 767 pixels on mount and update images accordingly
-    if (window.innerWidth > 767) {
+    const width = window.innerWidth;
+    if (width >= 1024) {
       setImages(imagesDesktop);
+    } else if (width >= 768) {
+      setImages(imagesTablet);
+    } else {
+      setImages(imagesMobile);
     }
   }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-    }, 3000); // Switches images every 3 seconds
+    }, 3000); // Switch images every 3 seconds
     return () => clearInterval(interval);
   }, [images]);
 
