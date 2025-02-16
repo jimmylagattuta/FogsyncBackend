@@ -63,6 +63,7 @@ const Intro = ({ scrollToContact }) => {
             key={index}
             src={image}
             alt="Slideshow"
+            loading={index === 0 ? "eager" : "lazy"}
             className={`hero-image ${index === currentImage ? 'fade-in' : 'fade-out'}`}
           />
         ))}
