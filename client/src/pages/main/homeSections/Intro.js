@@ -27,8 +27,10 @@ const imagesDesktop = [
 
 const Intro = ({ scrollToContact }) => {
   const [images, setImages] = useState(imagesMobile);
-  // Flag to trigger fade-out after 4 seconds.
+  // 'fade' triggers the transition phase after 4 seconds.
   const [fade, setFade] = useState(false);
+  // Controls the opacity for the second image.
+  const [secondOpacity, setSecondOpacity] = useState(0);
 
   // Update images based on current window width.
   const updateImages = () => {
@@ -53,7 +55,7 @@ const Intro = ({ scrollToContact }) => {
     return () => window.removeEventListener("resize", updateImages);
   }, []);
 
-  // Start fade-out after 4 seconds.
+  // After 4 seconds, trigger the fade transition.
   useEffect(() => {
     const timer = setTimeout(() => {
       setFade(true);
@@ -61,6 +63,17 @@ const Intro = ({ scrollToContact }) => {
     }, 4000);
     return () => clearTimeout(timer);
   }, []);
+
+  // When fade is triggered, start the second image fade-in after a slight delay.
+  useEffect(() => {
+    if (fade) {
+      const timer = setTimeout(() => {
+        setSecondOpacity(1);
+        console.log("Second image fade in started.");
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [fade]);
 
   return (
     <div className="hero-section">
@@ -72,7 +85,7 @@ const Intro = ({ scrollToContact }) => {
         </div>
       </div>
       <div className="hero-image-container">
-        {/* Render only the first image */}
+        {/* First Image: Visible immediately, then fades out */}
         <img
           src={images[0]}
           alt="Hero"
@@ -80,10 +93,23 @@ const Intro = ({ scrollToContact }) => {
           className="hero-image"
           style={
             !fade
-              ? { opacity: 1, transition: 'none' }  // Immediately show image with no transition.
-              : { opacity: 0, transition: 'opacity 1s ease-out' } // Fade out over 1s.
+              ? { opacity: 1, transition: 'none' }
+              : { opacity: 0, transition: 'opacity 1s ease-out' }
           }
         />
+        {/* Second Image: Lazily loaded, starts with opacity 0 then fades in */}
+        {fade && (
+          <img
+            src={images[1]}
+            alt="Hero 2"
+            loading="lazy"
+            className="hero-image"
+            style={{
+              opacity: secondOpacity,
+              transition: 'opacity 1s ease-in'
+            }}
+          />
+        )}
       </div>
     </div>
   );
