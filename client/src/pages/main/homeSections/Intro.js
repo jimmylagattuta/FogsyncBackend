@@ -1,71 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import './Intro.css';
 
+import mobileImages from './images/mobileImages';
+import tabletImages from './images/tabletImages';
+import desktopImages from './images/desktopImages';
+
 export default function Intro({ scrollToContact }) {
-  const [imgs, setImgs] = useState([]);
-  const [fade, setFade] = useState(false);
-  const [secondOpacity, setSecondOpacity] = useState(0);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [images, setImages] = useState(mobileImages);
 
-  // Dynamically import images based on current screen width
-  const handleResize = async () => {
+  // Select the correct image array based on window width
+  const handleResize = () => {
     const width = window.innerWidth;
-    // Decide which file to load
-    const path =
-      width >= 1024
-        ? '../../../images/desktopImages.js'
-        : width >= 768
-        ? '../../../images/tabletImages.js'
-        : '../../../images/mobileImages.js';
-
-    try {
-      const mod = await import(path);
-      setImgs(mod.default); // e.g., [url1, url2, url3, url4, url5]
-    } catch (e) {
-      console.error('Error loading images:', e);
+    if (width >= 1024) {
+      setImages(desktopImages);
+    } else if (width >= 768) {
+      setImages(tabletImages);
+    } else {
+      setImages(mobileImages);
     }
   };
 
-  // Load correct images on mount & handle window resizing
+  // Run on mount and whenever the window is resized
   useEffect(() => {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Wait 4 seconds, then fade out the first image
+  // Cycle through images every 3 seconds
   useEffect(() => {
-    const timer = setTimeout(() => setFade(true), 4000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Once fade is triggered, fade in the second image after a brief delay
-  useEffect(() => {
-    if (fade) {
-      const timer = setTimeout(() => setSecondOpacity(1), 50);
-      return () => clearTimeout(timer);
-    }
-  }, [fade]);
-
-  // If images not loaded yet, show a quick fallback or nothing
-  if (!imgs.length) {
-    return (
-      <div className="hero-section">
-        <div className="hero-overlay">
-          <div className="hero-text">
-            <h1>Welcome to BCB Carts!</h1>
-            <p>Your Trusted Partner in Leisure-Filled Electric Vehicles</p>
-            <button className="hero-button" onClick={scrollToContact}>
-              Contact Us
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // We'll fade from imgs[3] (the 4th image) to imgs[4] (the 5th image).
-  const firstImg = imgs[3];
-  const secondImg = imgs[4];
+    const interval = setInterval(() => {
+      setCurrentImage(prev => (prev + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [images]);
 
   return (
     <div className="hero-section">
@@ -78,34 +47,15 @@ export default function Intro({ scrollToContact }) {
           </button>
         </div>
       </div>
-
       <div className="hero-image-container">
-        {/* First image: visible immediately, then fades out after 4s */}
-        <img
-          src={firstImg}
-          alt="Hero"
-          loading="eager"
-          className="hero-image"
-          style={
-            !fade
-              ? { opacity: 1, transition: 'none' }
-              : { opacity: 0, transition: 'opacity 1s ease-out' }
-          }
-        />
-
-        {/* Second image: starts at opacity 0, then fades in once fade === true */}
-        {fade && secondImg && (
+        {images.map((image, index) => (
           <img
-            src={secondImg}
-            alt="Hero 2"
-            loading="lazy"
-            className="hero-image"
-            style={{
-              opacity: secondOpacity,
-              transition: 'opacity 1s ease-in'
-            }}
+            key={index}
+            src={image}
+            alt={`Slide ${index + 1}`}
+            className={`hero-image ${index === currentImage ? 'fade-in' : 'fade-out'}`}
           />
-        )}
+        ))}
       </div>
     </div>
   );
