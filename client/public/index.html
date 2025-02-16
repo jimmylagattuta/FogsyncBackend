@@ -9,7 +9,8 @@
       name="description"
       content="Web site created using create-react-app"
     />
-    <!-- Organization Schema with Social Media Profiles -->
+ 
+    
     <script type="application/ld+json">
       [
         {
@@ -25,31 +26,31 @@
             "telephone": "+1-323-333-3471",
             "contactType": "Customer Service",
             "areaServed": [
-            "Long Beach",
-            "Seal Beach",
-            "Huntington Beach",
-            "San Pedro",
-            "Lakewood",
-            "Irvine",
-            "Anaheim",
-            "Santa Ana",
-            "Newport Beach",
-            "Costa Mesa",
-            "Cypress",
-            "Buena Park",
-            "La Palma",
-            "La Mirada",
-            "Fullerton",
-            "Garden Grove",
-            "Tustin",
-            "Brea",
-            "La Habra",
-            "Westminster",
-            "Placentia",
-            "Bellflower",
-            "Downey",
-            "Paramount"
-          ],
+              "Long Beach",
+              "Seal Beach",
+              "Huntington Beach",
+              "San Pedro",
+              "Lakewood",
+              "Irvine",
+              "Anaheim",
+              "Santa Ana",
+              "Newport Beach",
+              "Costa Mesa",
+              "Cypress",
+              "Buena Park",
+              "La Palma",
+              "La Mirada",
+              "Fullerton",
+              "Garden Grove",
+              "Tustin",
+              "Brea",
+              "La Habra",
+              "Westminster",
+              "Placentia",
+              "Bellflower",
+              "Downey",
+              "Paramount"
+            ],
             "availableLanguage": [
               "English"
             ]
@@ -119,8 +120,402 @@
             "Eco-Friendly Vehicles",
             "Street-Legal Carts",
             "Repair & Maintenance"
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "25",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "author": {
+                "@type": "Person",
+                "name": "Dustin N."
+              },
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5"
+              },
+              "reviewBody": "BCB Carts provided excellent service! I found their business on Instagram and bought a cart for use in Huntington Beach. Highly recommend!"
+            },
+            {
+              "@type": "Review",
+              "author": {
+                "@type": "Person",
+                "name": "Emily S."
+              },
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5"
+              },
+              "reviewBody": "Discovered BCB Carts on TikTok and visited their Long Beach location. The team was super helpful and professional!"
+            }
           ]
         },
+      
+        <!-- 1. Cart Sales -->
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Cart Sales",
+          "serviceType": "Electric Cart Sales",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "BCB Carts - Long Beach",
+            "url": "https://bcbcarts.com"
+          },
+          "areaServed": [
+            "Long Beach",
+            "Seal Beach",
+            "Huntington Beach",
+            "San Pedro",
+            "Lakewood",
+            "Irvine",
+            "Anaheim",
+            "Santa Ana",
+            "Newport Beach",
+            "Costa Mesa",
+            "Cypress",
+            "Buena Park",
+            "La Palma",
+            "La Mirada",
+            "Fullerton",
+            "Garden Grove",
+            "Tustin",
+            "Brea",
+            "La Habra",
+            "Westminster",
+            "Placentia",
+            "Bellflower",
+            "Downey",
+            "Paramount"
+          ],
+          "description": "Offering a wide range of new and custom electric carts for personal and commercial use."
+        },
+      
+        <!-- 2. Cart Rentals -->
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Cart Rentals",
+          "serviceType": "Rental Service",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "BCB Carts - Long Beach",
+            "url": "https://bcbcarts.com"
+          },
+          "areaServed": [
+            "Long Beach",
+            "Seal Beach",
+            "Huntington Beach",
+            "San Pedro",
+            "Lakewood",
+            "Irvine",
+            "Anaheim",
+            "Santa Ana",
+            "Newport Beach",
+            "Costa Mesa",
+            "Cypress",
+            "Buena Park",
+            "La Palma",
+            "La Mirada",
+            "Fullerton",
+            "Garden Grove",
+            "Tustin",
+            "Brea",
+            "La Habra",
+            "Westminster",
+            "Placentia",
+            "Bellflower",
+            "Downey",
+            "Paramount"
+          ],
+          "description": "Flexible short-term and long-term electric cart rentals for leisure, business, or special events."
+        },
+      
+        <!-- 3. Installs -->
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Installs",
+          "serviceType": "Installation Service",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "BCB Carts - Long Beach",
+            "url": "https://bcbcarts.com"
+          },
+          "areaServed": [
+            "Long Beach",
+            "Seal Beach",
+            "Huntington Beach",
+            "San Pedro",
+            "Lakewood",
+            "Irvine",
+            "Anaheim",
+            "Santa Ana",
+            "Newport Beach",
+            "Costa Mesa",
+            "Cypress",
+            "Buena Park",
+            "La Palma",
+            "La Mirada",
+            "Fullerton",
+            "Garden Grove",
+            "Tustin",
+            "Brea",
+            "La Habra",
+            "Westminster",
+            "Placentia",
+            "Bellflower",
+            "Downey",
+            "Paramount"
+          ],
+          "description": "Professional installation of seats, accessories, custom parts, and other electric cart components."
+        },
+      
+        <!-- 4. Lithium -->
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Lithium",
+          "serviceType": "Battery Upgrade Service",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "BCB Carts - Long Beach",
+            "url": "https://bcbcarts.com"
+          },
+          "areaServed": [
+            "Long Beach",
+            "Seal Beach",
+            "Huntington Beach",
+            "San Pedro",
+            "Lakewood",
+            "Irvine",
+            "Anaheim",
+            "Santa Ana",
+            "Newport Beach",
+            "Costa Mesa",
+            "Cypress",
+            "Buena Park",
+            "La Palma",
+            "La Mirada",
+            "Fullerton",
+            "Garden Grove",
+            "Tustin",
+            "Brea",
+            "La Habra",
+            "Westminster",
+            "Placentia",
+            "Bellflower",
+            "Downey",
+            "Paramount"
+          ],
+          "description": "Lithium battery upgrades and replacements for increased range and improved performance."
+        },
+      
+        <!-- 5. Parts -->
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Parts",
+          "serviceType": "Parts & Accessories Service",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "BCB Carts - Long Beach",
+            "url": "https://bcbcarts.com"
+          },
+          "areaServed": [
+            "Long Beach",
+            "Seal Beach",
+            "Huntington Beach",
+            "San Pedro",
+            "Lakewood",
+            "Irvine",
+            "Anaheim",
+            "Santa Ana",
+            "Newport Beach",
+            "Costa Mesa",
+            "Cypress",
+            "Buena Park",
+            "La Palma",
+            "La Mirada",
+            "Fullerton",
+            "Garden Grove",
+            "Tustin",
+            "Brea",
+            "La Habra",
+            "Westminster",
+            "Placentia",
+            "Bellflower",
+            "Downey",
+            "Paramount"
+          ],
+          "description": "A full range of OEM and aftermarket parts for electric carts, including tires, brakes, and accessories."
+        },
+      
+        <!-- 6. Pressure Wash -->
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Pressure Wash",
+          "serviceType": "Pressure Washing Service",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "BCB Carts - Long Beach",
+            "url": "https://bcbcarts.com"
+          },
+          "areaServed": [
+            "Long Beach",
+            "Seal Beach",
+            "Huntington Beach",
+            "San Pedro",
+            "Lakewood",
+            "Irvine",
+            "Anaheim",
+            "Santa Ana",
+            "Newport Beach",
+            "Costa Mesa",
+            "Cypress",
+            "Buena Park",
+            "La Palma",
+            "La Mirada",
+            "Fullerton",
+            "Garden Grove",
+            "Tustin",
+            "Brea",
+            "La Habra",
+            "Westminster",
+            "Placentia",
+            "Bellflower",
+            "Downey",
+            "Paramount"
+          ],
+          "description": "Professional pressure washing to keep your electric cart clean and looking like new."
+        },
+      
+        <!-- 7. Custom Weld -->
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Custom Weld",
+          "serviceType": "Custom Welding Service",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "BCB Carts - Long Beach",
+            "url": "https://bcbcarts.com"
+          },
+          "areaServed": [
+            "Long Beach",
+            "Seal Beach",
+            "Huntington Beach",
+            "San Pedro",
+            "Lakewood",
+            "Irvine",
+            "Anaheim",
+            "Santa Ana",
+            "Newport Beach",
+            "Costa Mesa",
+            "Cypress",
+            "Buena Park",
+            "La Palma",
+            "La Mirada",
+            "Fullerton",
+            "Garden Grove",
+            "Tustin",
+            "Brea",
+            "La Habra",
+            "Westminster",
+            "Placentia",
+            "Bellflower",
+            "Downey",
+            "Paramount"
+          ],
+          "description": "Custom welding services for frames, accessories, and unique modifications to your electric cart."
+        },
+      
+        <!-- 8. Electronics -->
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Electronics",
+          "serviceType": "Electronics Integration Service",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "BCB Carts - Long Beach",
+            "url": "https://bcbcarts.com"
+          },
+          "areaServed": [
+            "Long Beach",
+            "Seal Beach",
+            "Huntington Beach",
+            "San Pedro",
+            "Lakewood",
+            "Irvine",
+            "Anaheim",
+            "Santa Ana",
+            "Newport Beach",
+            "Costa Mesa",
+            "Cypress",
+            "Buena Park",
+            "La Palma",
+            "La Mirada",
+            "Fullerton",
+            "Garden Grove",
+            "Tustin",
+            "Brea",
+            "La Habra",
+            "Westminster",
+            "Placentia",
+            "Bellflower",
+            "Downey",
+            "Paramount"
+          ],
+          "description": "Custom electronics integration, including lighting, sound systems, and GPS units for electric carts."
+        },
+      
+        <!-- 9. Repairs & Maintenance -->
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Repairs & Maintenance",
+          "serviceType": "Repair Service",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "BCB Carts - Long Beach",
+            "url": "https://bcbcarts.com"
+          },
+          "areaServed": [
+            "Long Beach",
+            "Seal Beach",
+            "Huntington Beach",
+            "San Pedro",
+            "Lakewood",
+            "Irvine",
+            "Anaheim",
+            "Santa Ana",
+            "Newport Beach",
+            "Costa Mesa",
+            "Cypress",
+            "Buena Park",
+            "La Palma",
+            "La Mirada",
+            "Fullerton",
+            "Garden Grove",
+            "Tustin",
+            "Brea",
+            "La Habra",
+            "Westminster",
+            "Placentia",
+            "Bellflower",
+            "Downey",
+            "Paramount"
+          ],
+          "description": "Comprehensive repairs and routine maintenance to ensure your electric cart stays in peak condition."
+        },
+      
         {
           "@context": "https://schema.org",
           "@type": "Product",
@@ -160,37 +555,6 @@
         },
         {
           "@context": "https://schema.org",
-          "@type": "AggregateRating",
-          "itemReviewed": {
-            "@type": "LocalBusiness",
-            "name": "BCB Carts",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Long Beach",
-              "addressRegion": "CA"
-            }
-          },
-          "ratingValue": "5",
-          "reviewCount": "25",
-          "bestRating": "5",
-          "worstRating": "1",
-          "review": [
-            {
-              "@type": "Review",
-              "author": {
-                "@type": "Person",
-                "name": "Dustin N."
-              },
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": "5"
-              },
-              "reviewBody": "BCB Carts provided excellent service! I found their business on Instagram and bought a cart for use in Huntington Beach. Highly recommend!"
-            }
-          ]
-        },
-        {
-          "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           "itemListElement": [
             {
@@ -209,6 +573,7 @@
         }
       ]
       </script>
+      
       
   
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
