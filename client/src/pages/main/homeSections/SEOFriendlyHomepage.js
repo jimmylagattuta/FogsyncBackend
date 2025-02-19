@@ -71,21 +71,36 @@ function SEOFriendlyHomepage() {
       {/* 🔑 Keywords Section */}
       <section className="keywords">
         <h2>Keywords</h2>
-        <ul>
-          <li>Electric Carts Long Beach</li>
-          <li>Golf Cart Rentals Huntington Beach</li>
-          <li>Electric Vehicle Sales Seal Beach</li>
-          <li>Low-Speed Vehicles San Pedro</li>
-          <li>Electric Cart Repairs Lakewood</li>
-          <li>Custom Golf Carts</li>
-          <li>Eco-Friendly Vehicles</li>
-          <li>Street-Legal Carts</li>
-          <li>Repair & Maintenance</li>
-          <li>Electric Carts for Sale</li>
-          <li>Golf Carts Long Beach</li>
-          <li>Custom Electric Carts</li>
-          <li>Affordable Electric Carts</li>
-        </ul>
+        <div class="scrollable-keywords">
+            <ul>
+                <li>Electric Golf Carts</li>
+                <li>Electric Cart Rentals</li>
+                <li>Golf Cart Upgrades</li>
+                <li>Golf Cart Batteries</li>
+                <li>Lithium Battery Upgrades</li>
+                <li>Golf Cart Accessories</li>
+                <li>Used Golf Carts</li>
+                <li>Refurbished Golf Carts</li>
+                <li>Custom Golf Carts</li>
+                <li>Eco-Friendly Vehicles</li>
+                <li>Street-Legal Carts</li>
+                <li>Neighborhood Electric Vehicles</li>
+                <li>Repair &amp; Maintenance</li>
+                <li>Electric Carts for Sale</li>
+                <li>Custom Electric Carts</li>
+                <li>Affordable Electric Carts</li>
+                <li>Golf Cart Service</li>
+                <li>Golf Cart Parts</li>
+                <li>Zero-Emission Vehicles</li>
+                <li>Battery-Powered Vehicles</li>
+                <li>Commercial Golf Carts</li>
+                <li>Event Golf Cart Rentals</li>
+                <li>Electric Utility Carts</li>
+                <li>Electric Transportation Solutions</li>
+                <li>Club Car Upgrades</li>
+                <li>Yamaha Golf Carts</li>
+            </ul>
+        </div>
       </section>
     </div>
   );

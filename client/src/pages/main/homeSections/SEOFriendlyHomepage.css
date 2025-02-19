@@ -47,6 +47,39 @@
     font-size: 0.95rem;
     color: #555;
   }
+
+  .keywords {
+    width: 300px;            /* Adjust as needed */
+    border: 1px solid #ccc;  /* Light border for clarity */
+    border-radius: 4px;
+    padding: 10px;
+    margin: 20px 0;          /* Spacing above/below */
+    background-color: #fff;  /* White background */
+  }
+  
+  .keywords h2 {
+    margin-top: 0;           /* Remove default top margin */
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  
+  .scrollable-keywords {
+    max-height: 200px;       /* Fixed height to enable scrolling */
+    overflow-y: scroll;      /* Vertical scrollbar when content exceeds max-height */
+    padding-right: 5px;      /* Space to avoid overlapping scrollbar */
+  }
+  
+  .scrollable-keywords ul {
+    list-style: disc;
+    margin: 0;
+    padding-left: 20px;      /* Indent bullets */
+  }
+  
+  .scrollable-keywords li {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  
   
   /* -----------------------------------------
      Media Queries for Responsive Design
