@@ -3,19 +3,19 @@ default: &default
   encoding: unicode
   pool: 5
   username: postgres
-  password: <%= ENV['BCB_CARTS_DATABASE_PASSWORD'] %>
+  password: <%= ENV['FOGSYNC_BACKEND_DATABASE_PASSWORD'] %>
   host: localhost
   port: 5432
 
 development:
   <<: *default
-  database: bcb_carts_development
+  database: fogsync_backend_development
 
 test:
   <<: *default
-  database: bcb_carts_test
+  database: fogsync_backend_test
 
 production:
   <<: *default
-  database: bcb_carts_production
+  database: fogsync_backend_production
   url: <%= ENV['DATABASE_URL'] %>
