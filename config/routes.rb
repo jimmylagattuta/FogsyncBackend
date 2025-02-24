@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   post '/contact', to: 'api/contacts#create'
   get "/pull_yelp_cache", to: "api/jobs#pull_yelp_cache"
 
-
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
 end
